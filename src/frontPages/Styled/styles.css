@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+
+    --header-color: #E0AFA0;
+    --main-color: #E6E5DF;
+
+
+    --header-height: 5rem;
+    --main-height: calc(100vh - var(--header-height));
+}
