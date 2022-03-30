@@ -25,7 +25,7 @@ const Menu = () => {
                 <MenuButton> Time Line </MenuButton>
             </LeftButton>
             <RightButton>
-                {/*<MenuButton> Admin Panel </MenuButton>*/}
+                <MenuButton> Admin Panel </MenuButton>
                 <MenuButton> Login</MenuButton>
             </RightButton>
         </MenuWrapper>

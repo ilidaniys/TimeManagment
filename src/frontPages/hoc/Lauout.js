@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 const LauoutWrapper = styled.div`
-  z-index: -100;
+  //z-index: 1;
   width: 100vw;
   margin-top: var(--header-height);
   height: var(--main-height);
@@ -10,6 +10,7 @@ const LauoutWrapper = styled.div`
   background: var(--main-color);
 `
 const ContentWrapper = styled.main`
+  
   //background: aqua;
   width: 80%;
   height: inherit;
