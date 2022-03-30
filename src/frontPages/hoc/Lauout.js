@@ -9,7 +9,7 @@ const LauoutWrapper = styled.div`
   position: relative;
   background: var(--main-color);
 `
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.main`
   //background: aqua;
   width: 80%;
   height: inherit;

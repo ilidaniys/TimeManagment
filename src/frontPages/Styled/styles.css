@@ -7,7 +7,7 @@
 
     --header-color: #E0AFA0;
     --main-color: #E6E5DF;
-
+    --button-color: #463F3A;
 
     --header-height: 5rem;
     --main-height: calc(100vh - var(--header-height));

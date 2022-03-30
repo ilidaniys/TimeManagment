@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import Menu from "../Header/Menu";
 
 const HeaderWrapper = styled.div`
   width: 100vw;
@@ -9,17 +10,18 @@ const HeaderWrapper = styled.div`
   left: 0;
   background: var(--header-color);
 `
-const HeaderContentWrapper = styled.div`
+const HeaderContentWrapper = styled.header`
   height: 100%;
-  width: 100%;
-  
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 `
 
-const Header = (props) => {
+const Header = () => {
     return (
         <HeaderWrapper>
             <HeaderContentWrapper>
-                {props.children}
+                <Menu/>
             </HeaderContentWrapper>
         </HeaderWrapper>
     );
