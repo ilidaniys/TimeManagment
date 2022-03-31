@@ -8,54 +8,52 @@ const InputWrapper = styled.div`
   width: 80%;
   height: 3rem;
 
+  .Input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    border: .1rem solid var(--stop-button-color);
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    ::placeholder {
+      color: var(--stop-button-color-60);
+    }
+    :focus {
+      border: .15rem solid var(--stop-button-color);
+    }
+    :focus::placeholder {
+      color: var(--stop-button-color);
+    }
+  }
+
+  .Text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    left: 1.2rem;
+    top: .6rem;
+    position: absolute;
+    color: #d81159;
+    pointer-events: none;
+    transition: transform .1s cubic-bezier(.9, 0, .1, 1);
+  }
+
+  .Input:focus ~ .Text {
+    transform: translate(-1.2rem, -2.5rem)
+  }
+  
+  .Input:not(:placeholder-shown) ~ .Text {
+    transform: translate(-1.2rem, -2.5rem)
+  }
 `
-const Input = styled.input`
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  border: .1rem solid var(--stop-button-color);
-  outline: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-
-  ::placeholder {
-    color: var(--stop-button-color-60);
-  }
-
-  :focus {
-    border: .15rem solid var(--stop-button-color);
-  }
-
-  :focus::placeholder { 
-    color: var(--stop-button-color);
-  }
-`
-
-const Text = styled.div`
-  font-size: 1.2rem;
-  font-weight: 600;
-  left: 1.2rem;
-  top: .6rem;
-  position: absolute;
-  color: #d81159;
-  pointer-events: none;
-  transition: transform .1s cubic-bezier(.9, 0, .1, 1);
-
-  Input:focus ~ Text{
-    transform: translate(-1.5rem, -3rem)
-  }
-  Input:not(:placeholder-shown) ~ Text {
-    transform: translate(-1.5rem, -3rem)
-  }
-`
-
 
 const InputRegister = ({children}) => {
     return (
         <InputWrapper>
-            <Input/>
-            <Text>{children}</Text>
+            <input className={'Input'} placeholder={' '}/>
+            <div className={'Text'}>{children}</div>
         </InputWrapper>
     );
 };

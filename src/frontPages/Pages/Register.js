@@ -46,7 +46,10 @@ const Register = () => {
                     Confirm Password
                 </InputRegister>
                 <SubmitBlock>
-                    <LinkSingup/>
+                    <LinkSingup
+                    tittle={'Already Register?'}
+                    text={'Sign In!'}
+                    />
                     <SubmitRegister/>
                 </SubmitBlock>
             </RegisterConteiner>

@@ -16,15 +16,15 @@ const LinkWrapper = styled.div`
   }
   
   > a:hover{
-    
+    color: var(--stop-button-color-60);
   }
 `
 
-const LinkSingup = () => {
+const LinkSingup = ({tittle, text}) => {
     return (
         <LinkWrapper>
-            <p>Already registered?</p>
-            <a href="/">Sign In!</a>
+            <p>{tittle}</p>
+            <a href="/">{text}</a>
         </LinkWrapper>
     );
 };

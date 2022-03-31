@@ -35,8 +35,8 @@ const Home = () => {
         <HomeWrapper>
             <HomeConteiner>
                 <DataCounter gridRow={'1'} gridColumn={'1/ span 2'} />
-                <MainButton className={'start'} ButtonHandler={buttonChanger}> Start</MainButton>
-                <MainButton className={'stop'} ButtonHandler={buttonChanger}> End</MainButton>
+                <MainButton className={'start'} buttonHandler={buttonChanger}> Start</MainButton>
+                <MainButton className={'stop'} buttonHandler={buttonChanger}> End</MainButton>
             </HomeConteiner>
         </HomeWrapper>
     );
