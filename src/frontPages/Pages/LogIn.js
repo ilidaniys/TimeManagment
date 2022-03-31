@@ -1,8 +1,12 @@
 import React from 'react';
-import {RegisnterWrapper, RegisterConteiner, SubmitBlock} from "./Register";
 import InputRegister from "../component/RegisterComponent/InputRegister";
 import LinkSingup from "../component/RegisterComponent/LinkSingup";
 import SubmitRegister from "../component/RegisterComponent/SubmitRegister";
+import {
+    RegisnterWrapper,
+    RegisterConteiner,
+    SubmitBlock
+} from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 
 const LogIn = () => {
     return (
