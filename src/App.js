@@ -5,6 +5,7 @@ import styles from './frontPages/Styled/styles.css'
 import Home from "./frontPages/Pages/Home";
 import TimeLine from "./frontPages/Pages/TimeLine";
 import Register from "./frontPages/Pages/Register";
+import LogIn from "./frontPages/Pages/LogIn";
 
 function App() {
     return (
@@ -21,6 +22,9 @@ function App() {
                     }/>
                     <Route path={'/register'} element={
                         <Register/>
+                    }/>
+                    <Route path={'/logIn'} element={
+                        <LogIn/>
                     }/>
                 </Routes>
             </Lauout>

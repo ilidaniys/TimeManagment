@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components'
 
 const InputWrapper = styled.div`
@@ -52,7 +52,14 @@ const InputWrapper = styled.div`
 const InputRegister = ({children}) => {
     return (
         <InputWrapper>
-            <input className={'Input'} placeholder={' '}/>
+            <input
+                className={'Input'}
+                placeholder={' '}
+                // ref={userRef}
+                autoComplete={'off'}
+                required
+                onChange={''}
+            />
             <div className={'Text'}>{children}</div>
         </InputWrapper>
     );

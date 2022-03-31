@@ -4,8 +4,8 @@ import InputRegister from "../component/RegisterComponent/InputRegister";
 import SubmitRegister from "../component/RegisterComponent/SubmitRegister";
 import LinkSingup from "../component/RegisterComponent/LinkSingup";
 
-const RegisnterWrapper = styled.div`
-  height: 30rem;
+export const RegisnterWrapper = styled.div`
+  height: ${props => props.height || '10rem'};
   width: 50%;
   margin-right: auto;
   margin-left: auto;
@@ -14,7 +14,7 @@ const RegisnterWrapper = styled.div`
 
 `
 
-const RegisterConteiner = styled.form`
+export const RegisterConteiner = styled.form`
   width: 100%;
   margin-top: 2rem;
   display: flex;
@@ -23,15 +23,15 @@ const RegisterConteiner = styled.form`
   justify-content: space-between;
   gap: 1.5rem;
 `
-const SubmitBlock = styled.div`
+export const SubmitBlock = styled.div`
   display: flex;
   justify-content: space-between;
   width: 80%;
 `
 
-const Register = () => {
+const Register = (props) => {
     return (
-        <RegisnterWrapper>
+        <RegisnterWrapper height={'30rem'}>
             <RegisterConteiner>
                 <InputRegister>
                     User Name
