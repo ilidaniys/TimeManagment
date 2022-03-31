@@ -4,26 +4,27 @@ import Header from "./frontPages/hoc/Header";
 import styles from './frontPages/Styled/styles.css'
 import Home from "./frontPages/Pages/Home";
 import TimeLine from "./frontPages/Pages/TimeLine";
+import Register from "./frontPages/Pages/Register";
 
 function App() {
     return (
-        <>
+        <BrowserRouter>
             <Header>
-
             </Header>
             <Lauout>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path='/' element={
-                            <Home/>
-                        }/>
-                        <Route path='/Timeline' element={
-                            <TimeLine/>
-                        }/>
-                    </Routes>
-                </BrowserRouter>
+                <Routes>
+                    <Route path='/' exact element={
+                        <Home/>
+                    }/>
+                    <Route path='/timeline' element={
+                        <TimeLine/>
+                    }/>
+                    <Route path={'/Register'} element={
+                        <Register/>
+                    }/>
+                </Routes>
             </Lauout>
-        </>
+        </BrowserRouter>
     );
 }
 

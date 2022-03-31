@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuButton from "../component/MenuButton";
+import {NavLink} from "react-router-dom";
 
 const MenuWrapper = styled.div`
   height: 100%;
@@ -17,12 +18,18 @@ const RightButton = styled.div`
   display: flex;
 `
 
+
+
 const Menu = () => {
     return (
         <MenuWrapper>
             <LeftButton>
-                <MenuButton> Home </MenuButton>
-                <MenuButton> Time Line </MenuButton>
+                <MenuButton>
+                    <NavLink to={'/'}> Home</NavLink>
+                </MenuButton>
+                <MenuButton>
+                    <NavLink to={'/timeline'}>Time Line</NavLink>
+                </MenuButton>
             </LeftButton>
             <RightButton>
                 <MenuButton> Admin Panel </MenuButton>

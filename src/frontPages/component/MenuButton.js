@@ -8,11 +8,17 @@ const Button = styled.button`
   background: none;
   font-size: 1.5rem;
   color: var(--button-color);
-  cursor: pointer;
-
-  :hover {
-   text-decoration: underline; 
+  
+  > a {
+    text-decoration: none;
+    color: inherit;
   }
+
+  > a:hover {
+    cursor: pointer;
+    color: var(--stop-button-color);
+  }
+
 `
 
 
