@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 import InputRegister from "../component/RegisterComponent/InputRegister";
+import SubmitRegister from "../component/RegisterComponent/SubmitRegister";
+import LinkSingup from "../component/RegisterComponent/LinkSingup";
 
 const RegisnterWrapper = styled.div`
   height: 30rem;
@@ -12,13 +14,19 @@ const RegisnterWrapper = styled.div`
 
 `
 
-const RegisterConteiner = styled.div`
-  margin-top: 3rem;
+const RegisterConteiner = styled.form`
+  width: 100%;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1.5rem;
+`
+const SubmitBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
 `
 
 const Register = () => {
@@ -37,6 +45,10 @@ const Register = () => {
                 <InputRegister>
                     Confirm Password
                 </InputRegister>
+                <SubmitBlock>
+                    <LinkSingup/>
+                    <SubmitRegister/>
+                </SubmitBlock>
             </RegisterConteiner>
         </RegisnterWrapper>
     );
