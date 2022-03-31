@@ -16,6 +16,7 @@ const ContentWrapper = styled.main`
   height: inherit;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
   
 `
 

@@ -19,7 +19,7 @@ function App() {
                     <Route path='/timeline' element={
                         <TimeLine/>
                     }/>
-                    <Route path={'/Register'} element={
+                    <Route path={'/register'} element={
                         <Register/>
                     }/>
                 </Routes>

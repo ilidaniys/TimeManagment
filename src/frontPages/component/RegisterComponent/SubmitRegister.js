@@ -1,11 +1,11 @@
 import React from 'react';
 
-const LoginButton = () => {
+const SubmitRegister = () => {
     return (
         <div>
-
+            
         </div>
     );
 };
 
-export default LoginButton;
+export default SubmitRegister;
