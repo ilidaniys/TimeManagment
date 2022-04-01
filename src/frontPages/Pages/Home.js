@@ -13,7 +13,7 @@ const HomeWrapper = styled.main`
 const HomeConteiner = styled.div`
   display: grid;
   z-index: 1;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
   margin-top: 10rem;
   width: 100%;
@@ -26,17 +26,16 @@ const HomeConteiner = styled.div`
 const Home = () => {
 
     const [buttonStatus, setButtonStatus] = useState(true);
-    const buttonChanger = () => {
-        setButtonStatus(!buttonStatus)
-        console.log(buttonStatus)
-    }
+    const buttonChanger = () => setButtonStatus(!buttonStatus)
 
     return (
         <HomeWrapper>
             <HomeConteiner>
                 <DataCounter gridRow={'1'} gridColumn={'1/ span 2'} />
-                <MainButton className={'start'} buttonHandler={buttonChanger}> Start</MainButton>
-                <MainButton className={'stop'} buttonHandler={buttonChanger}> End</MainButton>
+                { buttonStatus
+                    ? <MainButton className={'start'} buttonHandler={buttonChanger}> Start</MainButton>
+                    : <MainButton className={'stop'} buttonHandler={buttonChanger}> End</MainButton>
+                }
             </HomeConteiner>
         </HomeWrapper>
     );

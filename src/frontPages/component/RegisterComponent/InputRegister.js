@@ -50,10 +50,10 @@ const InputWrapper = styled.div`
       color: green;
     }
 
-    > .invalid{
+    > .invalid {
       margin-left: .3rem;
     }
-    
+
     > .hide {
       display: none;
     }
@@ -82,6 +82,7 @@ const InputWrapper = styled.div`
 `
 
 const InputRegister = ({
+                           type,
                            children,
                            useRef,
                            autoComplete,
@@ -92,12 +93,16 @@ const InputRegister = ({
                            onFocus,
                            focus,
                            state,
-                           validState
+                           additionalState,
+                           validState,
+                           minnumber,
+                           text,
                        }) => {
     return (
         <InputWrapper>
 
             <input
+                type={type}
                 className={'Input'}
                 placeholder={' '}
                 ref={useRef}
@@ -108,15 +113,22 @@ const InputRegister = ({
                 aria-describedby={ariaDesribedby}
                 onFocus={() => onFocus()}
             />
-            <p id={ariaDesribedby} className={focus && state && !validState ? 'instructions' : 'offScreen'}>
+            <p
+                id={ariaDesribedby}
+                className={(focus && (state !== undefined ? state : true) && !validState) ? 'instructions' : 'offScreen'}
+                minnumber={minnumber}>
                 <FontAwesomeIcon icon={faInfoCircle}/>
-                4 to 24 symbols <br/>
-                Only letters!
+                {minnumber || 'no matter'}<br/>
+                {text}!
             </p>
             <div className={'Text'}>
                 {children}
-                <span className={validState ? 'valid' : 'hide'}><FontAwesomeIcon icon={faCheck}/></span>
-                <span className={validState || !state ? 'hide' : 'invalid'}><FontAwesomeIcon icon={faTimes}/></span>
+                <span className={validState && (additionalState !== undefined ? additionalState : true) ? 'valid' : 'hide'}>
+                    <FontAwesomeIcon icon={faCheck}/>
+                </span>
+                <span className={validState || !state ? 'hide' : 'invalid'}>
+                    <FontAwesomeIcon icon={faTimes}/>
+                </span>
             </div>
 
         </InputWrapper>

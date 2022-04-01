@@ -38,17 +38,13 @@ const Register = (props) => {
     const [success, setSuccess] = useState(false)
 
 
-    useEffect(() =>{
+    useEffect(() => {
         const result = userRegex.test(user)
-        console.log(result)
-        console.log(user)
         setValidName(result)
     }, [user])
 
-    useEffect(() =>{
+    useEffect(() => {
         const result = emailRegex.test(email)
-        console.log(result)
-        console.log(email)
         setValidEmail(result)
     }, [email])
 
@@ -56,7 +52,7 @@ const Register = (props) => {
         const result = passwordRegex.test(pwd)
         console.log(result)
         console.log(pwd)
-        setValidPwd()
+        setValidPwd(result)
         const match = pwd === matchPwd
         setValidMatch(match)
     }, [pwd, matchPwd])
@@ -67,9 +63,10 @@ const Register = (props) => {
 
 
     return (
-        <RegisnterWrapper height={'30rem'}>
+        <RegisnterWrapper height={'35rem'}>
             <RegisterConteiner>
                 <InputRegister
+                    type={'text'}
                     useRef={userRef}
                     autoComplete={'off'}
                     required={'true'}
@@ -80,22 +77,64 @@ const Register = (props) => {
                     focus={userFocus}
                     state={user}
                     validState={validName}
+                    minnumber={'4 to 24 symbols'}
+                    text={'Only letters'}
                 >
                     User Name
                 </InputRegister>
-                <InputRegister>
+                <InputRegister
+                    type={'text'}
+                    autoComplete={'off'}
+                    required={'true'}
+                    setState={setEmail}
+                    ariaInvalid={validEmail ? 'false' : 'true'}
+                    ariaDesribedby={'eidnote'}
+                    onFocus={() => setEmailFocus(true)}
+                    focus={emailFocus}
+                    state={email}
+                    validState={validEmail}
+                    minnumber={''}
+                    text={'only email requare!'}
+                >
                     Email
                 </InputRegister>
-                <InputRegister>
+                <InputRegister
+                    type={'password'}
+                    autoComplete={'off'}
+                    required={'true'}
+                    setState={setPwd}
+                    ariaInvalid={validPwd ? 'false' : 'true'}
+                    ariaDesribedby={'pidnote'}
+                    onFocus={() => setPwdFocus(true)}
+                    focus={pwdFocus}
+                    // state={pwd}
+                    validState={validPwd}
+                    minnumber={'8 to 24 symbols'}
+                    text={'You should use at least one Capital letter, one symbols and one numbers'}
+                >
                     Password
                 </InputRegister>
-                <InputRegister>
+                <InputRegister
+                    type={'password'}
+                    autoComplete={'off'}
+                    required={'true'}
+                    setState={setMatchPwd}
+                    ariaInvalid={validMatch? 'false' : 'true'}
+                    ariaDesribedby={'matchnote'}
+                    onFocus={() => setMatchFocus(true)}
+                    focus={matchFocus}
+                    state={matchPwd}
+                    additionalState={matchPwd}
+                    validState={validMatch}
+                    minnumber={'8 to 24 symbols'}
+                    text={'You should use at least one Capital letter, one symbols and one numbers! And password should match!'}
+                >
                     Confirm Password
                 </InputRegister>
                 <SubmitBlock>
                     <LinkSingup
-                    tittle={'Already Register?'}
-                    text={'Sign In!'}
+                        tittle={'Already Register?'}
+                        text={'Sign In!'}
                     />
                     <SubmitRegister/>
                 </SubmitBlock>

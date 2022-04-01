@@ -9,13 +9,14 @@ export const RegisnterWrapper = styled.div`
   margin-top: 5rem;
 `
 export const RegisterConteiner = styled.form`
+  margin-top: 1.2rem;
   width: 100%;
-  margin-top: 2rem;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1.2rem;
 `
 export const SubmitBlock = styled.div`
   display: flex;
