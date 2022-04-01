@@ -8,8 +8,9 @@ import {
     RegisterConteiner,
     SubmitBlock
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
+import SuccessMassage from "../component/RegisterComponent/SuccessMassage";
 
-const userRegex = /^[a-zA-Z\-]{3,24}$/;
+const userRegex = /^[a-zA-Z\-]{4,24}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,24}$/;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
@@ -62,9 +63,16 @@ const Register = (props) => {
     }, [user, email, pwd, matchPwd])
 
 
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        setSuccess(true)
+    }
+
     return (
         <RegisnterWrapper height={'35rem'}>
-            <RegisterConteiner>
+            { success
+                ? <SuccessMassage/>
+                : <RegisterConteiner onSubmit={handleSubmit}>
                 <InputRegister
                     type={'text'}
                     useRef={userRef}
@@ -108,6 +116,7 @@ const Register = (props) => {
                     onFocus={() => setPwdFocus(true)}
                     focus={pwdFocus}
                     // state={pwd}
+                    additionalState={pwd}
                     validState={validPwd}
                     minnumber={'8 to 24 symbols'}
                     text={'You should use at least one Capital letter, one symbols and one numbers'}
@@ -136,9 +145,15 @@ const Register = (props) => {
                         tittle={'Already Register?'}
                         text={'Sign In!'}
                     />
-                    <SubmitRegister/>
+                    <SubmitRegister
+                    validName={validName}
+                    validEmail={validEmail}
+                    validPwd={validPwd}
+                    validMatch={validMatch}
+                    />
                 </SubmitBlock>
             </RegisterConteiner>
+            }
         </RegisnterWrapper>
     );
 };

@@ -74,6 +74,9 @@ const InputWrapper = styled.div`
     font-size: .8rem;
     //background: rgba( 0, 0, 0, 0.4);
     color: #d81159;
+    > .icon{
+      margin: 0 .3rem 0 0;
+    }
   }
 
   .offScreen {
@@ -117,7 +120,7 @@ const InputRegister = ({
                 id={ariaDesribedby}
                 className={(focus && (state !== undefined ? state : true) && !validState) ? 'instructions' : 'offScreen'}
                 minnumber={minnumber}>
-                <FontAwesomeIcon icon={faInfoCircle}/>
+                <FontAwesomeIcon icon={faInfoCircle} className={'icon'}/>
                 {minnumber || 'no matter'}<br/>
                 {text}!
             </p>
@@ -126,7 +129,7 @@ const InputRegister = ({
                 <span className={validState && (additionalState !== undefined ? additionalState : true) ? 'valid' : 'hide'}>
                     <FontAwesomeIcon icon={faCheck}/>
                 </span>
-                <span className={validState || !state ? 'hide' : 'invalid'}>
+                <span className={validState || !additionalState ? 'hide' : 'invalid'}>
                     <FontAwesomeIcon icon={faTimes}/>
                 </span>
             </div>

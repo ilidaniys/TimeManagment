@@ -5,19 +5,34 @@ const SubmitButton = styled.button`
   height: 3rem;
   width: 8rem;
   //margin-right: 5rem;
-  border: .2rem solid ;
+  border: .2rem solid;
   background: var(--stop-button-color);
-  cursor: pointer;
+
   font-size: 1.2rem;
-  
+
   :hover{
     filter: brightness(0.8);
+    cursor: pointer;
   }
+  
+  
+  :disabled{
+    filter: brightness(1);
+    background: var(--disabled-color);
+    cursor: inherit;
+  }
+  //:disabled :hover{
+  //  background: #d81159;
+  //}
+  
 `
 
-const SubmitRegister = () => {
+const SubmitRegister = ({validMatch, validEmail, validName, validPwd}) => {
     return (
-        <SubmitButton>
+        <SubmitButton
+            type="submit"
+            disabled={!validEmail || !validMatch || !validPwd || !validName}
+        >
             Confirm
         </SubmitButton>
     );
