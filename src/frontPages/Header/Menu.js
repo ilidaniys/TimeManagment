@@ -27,13 +27,14 @@ const Menu = () => {
                 <MenuButton>
                     <NavLink to={'/'}> Home</NavLink>
                 </MenuButton>
-                <MenuButton>
-                    <NavLink to={'/profile'}>Time Line</NavLink>
-                </MenuButton>
             </LeftButton>
             <RightButton>
-                <MenuButton> Admin Panel </MenuButton>
-                <MenuButton> Login</MenuButton>
+                <MenuButton>
+                    <NavLink to={'/adminPanel'}>Admin Panel </NavLink>
+                </MenuButton>
+                <MenuButton>
+                    <NavLink to={'/profile'}>Profile</NavLink>
+                    </MenuButton>
             </RightButton>
         </MenuWrapper>
     );

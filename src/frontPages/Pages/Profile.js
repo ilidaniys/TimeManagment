@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
+import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 
 
 const ProfileWrapper = styled.div`
@@ -11,11 +12,16 @@ const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+  font-size: 2.3rem;
+  color: #463F3A;
 
   > .wrapperCard {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
 
@@ -27,12 +33,11 @@ const ProfileInfo = styled.div`
   font-weight: 600;
   font-size: 2.3rem;
   color: #463F3A;
-  
+
   > div {
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr 1fr;
-
 
 
     > h1 {
@@ -51,10 +56,10 @@ const ProfileInfo = styled.div`
     }
   }
 
-> h3 {
-  font-weight: 500;
-  font-size: 2rem;
-}
+  > h3 {
+    font-weight: 500;
+    font-size: 2rem;
+  }
 `
 
 const Red = styled.p`
@@ -67,13 +72,61 @@ const params = {
     allTime: '30:20:10',
     session: [
         {
-            startDate: moment([2021, 0, 1, 0, 4, 1]).toDate(),
-            endDate: moment([2021, 0, 1, 0, 3, 2]).toDate(),
-        }
+            startDate: 10,
+            endDate: 5,
+        },
+        {
+            startDate: 200000,
+            endDate: 1000,
+        },
+        {
+            startDate: 10,
+            endDate: 5,
+        },
+        {
+            startDate: 200000,
+            endDate: 1000,
+        },
+        {
+            startDate: 10,
+            endDate: 5,
+        },
+        {
+            startDate: 200000,
+            endDate: 1000,
+        },
+        {
+            startDate: 10,
+            endDate: 5,
+        },
+        {
+            startDate: 200000,
+            endDate: 1000,
+        },
+
     ]
 }
 
+
 const Profile = () => {
+
+
+    const renderCards = () => {
+       return params.session.map(({startDate, endDate}, index) => {
+            const counter = startDate - endDate
+            const time = SecondToDate(counter)
+
+            return (
+                <SessionCard
+                    key={index}
+                    startDate={startDate}
+                    endDate={endDate}
+                    time={time}
+                />
+            )
+        })
+    }
+
     return (
         <ProfileWrapper>
             <ProfileInfo>
@@ -86,9 +139,9 @@ const Profile = () => {
                 </div>
                 <h3>All your spend time for work: <Red>{params.allTime}</Red></h3>
             </ProfileInfo>
+            Your session:
             <div className={'wrapperCard'}>
-                {}
-                <SessionCard />
+                {renderCards()}
             </div>
         </ProfileWrapper>
     );

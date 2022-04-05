@@ -5,9 +5,10 @@ const LauoutWrapper = styled.div`
   //z-index: 1;
   width: 100vw;
   margin-top: var(--header-height);
-  height: var(--main-height);
+  min-height: var(--main-height);
   position: relative;
   background: var(--main-color);
+
 `
 const ContentWrapper = styled.main`
   
@@ -17,6 +18,7 @@ const ContentWrapper = styled.main`
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  overflow-x: hidden
   
 `
 
