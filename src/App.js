@@ -6,29 +6,33 @@ import Home from "./frontPages/Pages/Home";
 import Profile from "./frontPages/Pages/Profile";
 import Register from "./frontPages/Pages/Register";
 import LogIn from "./frontPages/Pages/LogIn";
+import CounterContext from "./frontPages/Context/CounterContext/CounterContext";
+
 
 function App() {
     return (
-        <BrowserRouter>
-            <Header>
-            </Header>
-            <Lauout>
-                <Routes>
-                    <Route path='/' exact element={
-                        <Home/>
-                    }/>
-                    <Route path='/profile' element={
-                        <Profile/>
-                    }/>
-                    <Route path={'/register'} element={
-                        <Register/>
-                    }/>
-                    <Route path={'/logIn'} element={
-                        <LogIn/>
-                    }/>
-                </Routes>
-            </Lauout>
-        </BrowserRouter>
+        <CounterContext>
+            <BrowserRouter>
+                <Header>
+                </Header>
+                <Lauout>
+                    <Routes>
+                        <Route path='/' exact element={
+                            <Home/>
+                        }/>
+                        <Route path='/profile' element={
+                            <Profile/>
+                        }/>
+                        <Route path={'/register'} element={
+                            <Register/>
+                        }/>
+                        <Route path={'/logIn'} element={
+                            <LogIn/>
+                        }/>
+                    </Routes>
+                </Lauout>
+            </BrowserRouter>
+        </CounterContext>
     );
 }
 

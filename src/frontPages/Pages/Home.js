@@ -1,9 +1,7 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import MainButton from "../component/MainButton";
-// import DataCounter from "../component/DataCounter";
-import moment from "moment";
-import {SecondToDate} from "../component/CounterLogic/CounterFunction";
+import {useCounter} from "../Context/CounterContext/CounterContext";
 
 // const date = new Date(counter).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
 // const date2 = new Date(counter).getDate() - 1
@@ -35,66 +33,25 @@ const HomeConteiner = styled.div`
   }
 `
 
-export const StartDateContext = createContext()
 
 const Home = () => {
+    const counter = useCounter()
 
-    const [startCounter, setStartCounter] = useState('')
-    const [currentCounter, setCurrentCounter] = useState('00:00:00')
-    const [endCounter, setEndCounter] = useState('')
-
-    const startCounterHandler = () => {
-        const startData = moment().toDate()
-        console.log('start', startData)
-        setStartCounter(startData)
-    }
-    const endCounterhandler = () => {
-        const endData = moment().toDate()
-        setStartCounter('')
-        console.log('end', endData)
-        setEndCounter(endData)
-    }
-
-
-    useEffect(() => {
-
-        const interval = setInterval(() => {
-            if (startCounter === '') {
-                clearInterval(interval)
-                return
-            }
-            const data = moment().toDate()
-            const counter = data - startCounter
-            const time = SecondToDate(counter)
-
-            console.log(time)
-            console.log(counter)
-            setCurrentCounter(time)
-        }, 1000)
-
-        return () => clearInterval(interval)
-    }, [setCurrentCounter, startCounter])
-
-
-
-    const [buttonStatus, setButtonStatus] = useState(true);
-    const buttonChanger = () => setButtonStatus(!buttonStatus)
 
     return (
         <HomeWrapper>
             <HomeConteiner>
-                <p>Your time: {`${currentCounter}`}</p>
+                <p>Your time: {`${counter.currentCounter}`}</p>
 
-                {(startCounter === '')
+                {(counter.startCounter === '')
                     ? <MainButton
                         className={'start'}
-                        buttonHandler={buttonChanger}
-                        Counterscript={startCounterHandler}>
+                        Counterscript={counter.startCounterHandler}
+                    >
                         Start</MainButton>
                     : <MainButton
                         className={'stop'}
-                        buttonHandler={buttonChanger}
-                        Counterscript={endCounterhandler}
+                        Counterscript={counter.endCounterHandler}
                     >
                         End</MainButton>
                 }
