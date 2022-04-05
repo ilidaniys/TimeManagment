@@ -1,21 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components'
-import moment from "moment";
 
 const DataCounterWrapper = styled.div`
   grid-row: ${props => props.gridRow};
   grid-column: ${props => props.gridColumn};
 `
-// For time-format
-// moment().format('LTS');
 
 
-const DataCounter = (gridRow, gridColumn, startCounter, endCounter,) => {
-
-
+const DataCounter = (props) => {
     return (
-        <DataCounterWrapper>
-            <p> </p>
+        <DataCounterWrapper {...props}>
+
         </DataCounterWrapper>
     );
 };

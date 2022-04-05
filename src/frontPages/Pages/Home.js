@@ -1,7 +1,7 @@
 import React, {createContext, useEffect, useState} from 'react';
 import styled from 'styled-components'
 import MainButton from "../component/MainButton";
-import DataCounter from "../component/DataCounter";
+// import DataCounter from "../component/DataCounter";
 import moment from "moment";
 
 // const date = new Date(counter).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
@@ -24,7 +24,6 @@ const HomeConteiner = styled.div`
   border: .1rem solid #B9BCD0;
 
   > p {
-    //width: 20%;
     gridRow: 1;
     gridColumn: 1/ span 2;
     text-align: center;

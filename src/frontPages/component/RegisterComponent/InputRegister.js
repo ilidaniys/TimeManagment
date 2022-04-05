@@ -24,7 +24,6 @@ const InputWrapper = styled.div`
 
     ::placeholder {
       color: var(--stop-button-color-60);
-      user-select: none;
     }
 
     :focus {
@@ -42,10 +41,9 @@ const InputWrapper = styled.div`
     left: 1.2rem;
     top: .6rem;
     position: absolute;
-    color: var(--stop-button-color);
+    color: #d81159;
     pointer-events: none;
     transition: transform .1s cubic-bezier(.9, 0, .1, 1);
-    user-select: none;
 
     > .valid {
       margin-left: .3rem;
@@ -121,7 +119,7 @@ const InputRegister = ({
             <p
                 id={ariaDesribedby}
                 className={(focus && (state !== undefined ? state : true) && !validState) ? 'instructions' : 'offScreen'}
-            >
+                minnumber={minnumber}>
                 <FontAwesomeIcon icon={faInfoCircle} className={'icon'}/>
                 {minnumber || 'no matter'}<br/>
                 {text}!

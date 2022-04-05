@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import {NavLink} from "react-router-dom";
 
 
 const LinkWrapper = styled.div`
@@ -25,7 +24,7 @@ const LinkSingup = ({tittle, text}) => {
     return (
         <LinkWrapper>
             <p>{tittle}</p>
-            <NavLink to="/login">{text}</NavLink>
+            <a href="/">{text}</a>
         </LinkWrapper>
     );
 };

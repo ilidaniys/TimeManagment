@@ -10,9 +10,9 @@ import {
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 import SuccessMassage from "../component/RegisterComponent/SuccessMassage";
 
-export const userRegex = /^[a-zA-Z\-]{4,24}$/;
-export const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,24}$/;
-export const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const userRegex = /^[a-zA-Z\-]{4,24}$/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,24}$/;
+const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const Register = (props) => {
 
@@ -51,6 +51,8 @@ const Register = (props) => {
 
     useEffect(() => {
         const result = passwordRegex.test(pwd)
+        console.log(result)
+        console.log(pwd)
         setValidPwd(result)
         const match = pwd === matchPwd
         setValidMatch(match)
@@ -63,7 +65,6 @@ const Register = (props) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
         setSuccess(true)
     }
 
@@ -83,7 +84,6 @@ const Register = (props) => {
                     onFocus={() => setUserFocus(true)}
                     focus={userFocus}
                     state={user}
-                    additionalState={user}
                     validState={validName}
                     minnumber={'4 to 24 symbols'}
                     text={'Only letters'}
@@ -103,7 +103,6 @@ const Register = (props) => {
                     validState={validEmail}
                     minnumber={''}
                     text={'only email requare!'}
-                    additionalState={email}
                 >
                     Email
                 </InputRegister>
