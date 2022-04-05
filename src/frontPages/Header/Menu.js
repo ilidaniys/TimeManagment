@@ -28,7 +28,7 @@ const Menu = () => {
                     <NavLink to={'/'}> Home</NavLink>
                 </MenuButton>
                 <MenuButton>
-                    <NavLink to={'/timeline'}>Time Line</NavLink>
+                    <NavLink to={'/profile'}>Time Line</NavLink>
                 </MenuButton>
             </LeftButton>
             <RightButton>

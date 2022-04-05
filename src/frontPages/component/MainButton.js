@@ -9,6 +9,7 @@ const ButtonWrapper = styled.button`
   font-weight: 600;
   border-radius: 1rem;
   cursor: pointer !important; 
+  height: 10rem;
   
   &.start {
     border: .2rem solid #adeee3;
@@ -26,9 +27,16 @@ const ButtonWrapper = styled.button`
 `
 
 
-const MainButton = ({className, children, buttonHandler}) => {
+
+const MainButton = ({className, children, Counterscript}) => {
+
+    // function buttonFunction () {
+    //     buttonHandler()
+    //     Counterscript()
+    // }
+
     return (
-        <ButtonWrapper className={className} onClick={() => buttonHandler()}>
+        <ButtonWrapper className={className} onClick={() => Counterscript()}>
             {children}
         </ButtonWrapper>
     );

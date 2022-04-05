@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import MainButton from "../component/MainButton";
 // import DataCounter from "../component/DataCounter";
 import moment from "moment";
+import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 
 // const date = new Date(counter).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
 // const date2 = new Date(counter).getDate() - 1
@@ -15,17 +16,20 @@ const HomeWrapper = styled.main`
 `
 const HomeConteiner = styled.div`
   display: grid;
+  box-sizing: border-box;
   z-index: 1;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
-  margin-top: 10rem;
+  margin: 5rem 0;
   width: 100%;
-  max-height: 20rem;
+  //max-height: 20rem;
   border: .1rem solid #B9BCD0;
+  padding: 2rem;
+  
 
   > p {
-    gridRow: 1;
-    gridColumn: 1/ span 2;
+    grid-row: 1;
+    grid-column: 1/ span 2;
     text-align: center;
     font-size: 8rem;
   }
@@ -61,23 +65,7 @@ const Home = () => {
             }
             const data = moment().toDate()
             const counter = data - startCounter
-
-
-            let sec_num = parseInt(counter, 10); // don't forget the second param
-            let hours = Math.floor(sec_num / 3600000);
-            let minutes = Math.floor((sec_num - (hours * 3600000)) / 60000);
-            let seconds = (sec_num - (hours * 3600000) - (minutes * 60000)).toString().slice(0, -3);
-
-            if (hours < 10) {
-                hours = "0" + hours;
-            }
-            if (minutes < 10) {
-                minutes = "0" + minutes;
-            }
-            if (seconds < 10) {
-                seconds = "0" + seconds;
-            }
-            const time = (`${hours}:${minutes}:${seconds}`).toString();
+            const time = SecondToDate(counter)
 
             console.log(time)
             console.log(counter)

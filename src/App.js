@@ -3,7 +3,7 @@ import Lauout from "./frontPages/hoc/Lauout";
 import Header from "./frontPages/hoc/Header";
 import styles from './frontPages/Styled/styles.css'
 import Home from "./frontPages/Pages/Home";
-import TimeLine from "./frontPages/Pages/TimeLine";
+import Profile from "./frontPages/Pages/Profile";
 import Register from "./frontPages/Pages/Register";
 import LogIn from "./frontPages/Pages/LogIn";
 
@@ -17,8 +17,8 @@ function App() {
                     <Route path='/' exact element={
                         <Home/>
                     }/>
-                    <Route path='/timeline' element={
-                        <TimeLine/>
+                    <Route path='/profile' element={
+                        <Profile/>
                     }/>
                     <Route path={'/register'} element={
                         <Register/>
