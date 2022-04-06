@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import moment from "moment";
+
 
 const SessionCardWrapper = styled.div`
   box-sizing: border-box;
@@ -9,17 +9,17 @@ const SessionCardWrapper = styled.div`
   grid-template-rows: 1fr 1fr;
   width: 35rem;
   height: auto;
-  border: .2rem solid #463F3A;
-  box-shadow: .2rem .2rem 1rem .1rem #463F3A;
+  padding: 1rem;
+  background: #eeede5;
+  border-radius: .24rem;
   > h1 {
     box-sizing: border-box;
     font-size: 1.5rem;
-    border-bottom: .1rem solid #463F3A;
   }
+
   > p {
     margin-top: auto;
     font-size: 1.5rem;
-    border-bottom: .1rem solid #463F3A;
   }
 `
 
