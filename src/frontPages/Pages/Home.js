@@ -30,6 +30,7 @@ const HomeConteiner = styled.div`
     grid-column: 1/ span 2;
     text-align: center;
     font-size: 8rem;
+    user-select: none;
   }
 `
 

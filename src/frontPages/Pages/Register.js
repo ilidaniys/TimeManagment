@@ -51,8 +51,6 @@ const Register = (props) => {
 
     useEffect(() => {
         const result = passwordRegex.test(pwd)
-        console.log(result)
-        console.log(pwd)
         setValidPwd(result)
         const match = pwd === matchPwd
         setValidMatch(match)

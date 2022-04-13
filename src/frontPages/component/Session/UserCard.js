@@ -10,6 +10,7 @@ const UserCardWrapper = styled.div`
   background: #eeede5;
   border-radius: .24rem;
   cursor: pointer;
+  user-select: none;
   
   > a {
     text-decoration: none;

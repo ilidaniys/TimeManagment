@@ -45,15 +45,6 @@ const InputWrapper = styled.div`
     pointer-events: none;
     transition: transform .1s cubic-bezier(.9, 0, .1, 1);
 
-    > .valid {
-      margin-left: .3rem;
-      color: green;
-    }
-
-    > .invalid {
-      margin-left: .3rem;
-    }
-
     > .hide {
       display: none;
     }
@@ -71,7 +62,8 @@ const InputWrapper = styled.div`
     display: block;
     font-size: .8rem;
     color: #d81159;
-    > .icon{
+
+    > .icon {
       margin: 0 .3rem 0 0;
     }
   }
@@ -81,23 +73,17 @@ const InputWrapper = styled.div`
   }
 `
 
-const InputRegister = ({
-                           type,
-                           children,
-                           useRef,
-                           autoComplete,
-                           required,
-                           setState,
-                           ariaInvalid,
-                           ariaDesribedby,
-                           onFocus,
-                           focus,
-                           state,
-                           additionalState,
-                           validState,
-                           minnumber,
-                           text,
-                       }) => {
+const InputLogin = ({
+                        type,
+                        useRef,
+                        autoComplete,
+                        required,
+                        setState,
+                        ariaInvalid,
+                        ariaDesribedby,
+                        onFocus,
+                        children
+                    }) => {
     return (
         <InputWrapper>
 
@@ -113,26 +99,11 @@ const InputRegister = ({
                 aria-describedby={ariaDesribedby}
                 onFocus={() => onFocus()}
             />
-            <p
-                id={ariaDesribedby}
-                className={(focus && (state !== undefined ? state : true) && !validState) ? 'instructions' : 'offScreen'}
-                >
-                <FontAwesomeIcon icon={faInfoCircle} className={'icon'}/>
-                {minnumber || 'no matter'}<br/>
-                {text}!
-            </p>
             <div className={'Text'}>
                 {children}
-                <span className={validState && (additionalState !== undefined ? additionalState : true) ? 'valid' : 'hide'}>
-                    <FontAwesomeIcon icon={faCheck}/>
-                </span>
-                <span className={validState || !additionalState ? 'hide' : 'invalid'}>
-                    <FontAwesomeIcon icon={faTimes}/>
-                </span>
             </div>
-
         </InputWrapper>
     );
 };
 
-export default InputRegister;
+export default InputLogin;
