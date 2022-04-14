@@ -9,6 +9,7 @@ import {
     SubmitBlock
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 import SuccessMassage from "../component/RegisterComponent/SuccessMassage";
+import axios from "axios";
 
 const userRegex = /^[a-zA-Z\-]{4,24}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,24}$/;
@@ -62,8 +63,18 @@ const Register = (props) => {
 
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
-        setSuccess(true)
+        // event.preventDefault()
+        const result = await axios
+            .post('http://localhost:5000/api/register', {
+                name: user,
+                email,
+                password: pwd,
+                repeat: matchPwd
+            })
+            .then((res) =>{
+                console.log(res.data)
+                setSuccess(true)
+            })
     }
 
     return (
