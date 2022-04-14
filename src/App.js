@@ -7,37 +7,51 @@ import Profile from "./frontPages/Pages/Profile";
 import Register from "./frontPages/Pages/Register";
 import LogIn from "./frontPages/Pages/LogIn";
 import CounterContext from "./frontPages/Context/CounterContext/CounterContext";
+import AuthContext, {useAuth} from "./frontPages/Context/authContext/AuthContext";
 import AdminPanel from "./frontPages/Pages/AdminPanel";
+import Hoc from "./frontPages/hoc/Hoc";
 
 
 function App() {
-    return (
-        <CounterContext>
-            <BrowserRouter>
-                <Header>
-                </Header>
-                <Lauout>
-                    <Routes>
-                        <Route path='/' exact element={
-                            <Home/>
-                        }/>
-                        <Route path='/profile' element={
-                            <Profile/>
-                        }/>
-                        <Route path={'/register'} element={
-                            <Register/>
-                        }/>
-                        <Route path={'/logIn'} element={
-                            <LogIn/>
-                        }/>
-                        <Route path={'/AdminPanel'} element={
-                            <AdminPanel/>
-                        }/>
+    const auth = useAuth()
 
-                    </Routes>
-                </Lauout>
-            </BrowserRouter>
-        </CounterContext>
+    return (
+        <AuthContext>
+            <CounterContext>
+                <Hoc>
+                    {auth
+                        ? <BrowserRouter>
+                            <Header>
+                            </Header>
+                            <Lauout>
+                                <Routes>
+                                    <Route path='/' exact element={
+                                        <Home/>
+                                    }/>
+                                    <Route path='/profile' element={
+                                        <Profile/>
+                                    }/>
+                                    <Route path={'/AdminPanel'} element={
+                                        <AdminPanel/>
+                                    }/>
+
+                                </Routes>
+                            </Lauout>
+                        </BrowserRouter>
+                        : <BrowserRouter>
+                                <Routes>
+                                    <Route path={'/logIn'} element={
+                                        <LogIn/>
+                                    }/>
+                                    <Route path={'/register'} element={
+                                        <Register/>
+                                    }/>
+                                </Routes>
+                        </BrowserRouter>
+                    }
+                </Hoc>
+            </CounterContext>
+        </AuthContext>
     );
 }
 

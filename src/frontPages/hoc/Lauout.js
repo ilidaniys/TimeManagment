@@ -4,13 +4,13 @@ import styled from 'styled-components'
 const LauoutWrapper = styled.div`
   //z-index: 1;
   width: 100vw;
-  margin-top: var(--header-height);
+  //margin-top: var(--header-height);
   min-height: var(--main-height);
   position: relative;
   background: var(--main-color);
 
 `
-const ContentWrapper = styled.main`
+const ContentWrapper = styled.div`
   
   //background: aqua;
   width: 80%;

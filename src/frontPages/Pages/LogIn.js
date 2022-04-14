@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react';
 import LinkSingup from "../component/RegisterComponent/LinkSingup";
 import SubmitRegister from "../component/RegisterComponent/SubmitRegister";
 import {
-    RegisnterWrapper,
-    RegisterConteiner,
+    RegisterConteiner, RegisterWrapper,
     SubmitBlock
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 import InputLogin from "../component/RegisterComponent/InputLogin";
+import {useAuth} from "../Context/authContext/AuthContext";
 
 const LogIn = () => {
+
+    const auth = useAuth()
 
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
@@ -52,8 +54,12 @@ const LogIn = () => {
         }
     }, [pwd])
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+    }
+
     return (
-        <RegisnterWrapper height={'25rem'}>
+        <RegisterWrapper height={'25rem'}>
             <RegisterConteiner>
                 <InputLogin
                     type={'text'}
@@ -101,7 +107,7 @@ const LogIn = () => {
                     />
                 </SubmitBlock>
             </RegisterConteiner>
-        </RegisnterWrapper>
+        </RegisterWrapper>
     );
 };
 

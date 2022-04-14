@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MenuButton from "../component/MenuButton";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const MenuWrapper = styled.div`
   height: 100%;
@@ -18,7 +19,11 @@ const RightButton = styled.div`
   display: flex;
 `
 
-
+const quite = () => {
+    axios
+        .get('http://localhost:5000/api/logout')
+        .then()
+}
 
 const Menu = () => {
     return (
@@ -34,7 +39,12 @@ const Menu = () => {
                 </MenuButton>
                 <MenuButton>
                     <NavLink to={'/profile'}>Profile</NavLink>
-                    </MenuButton>
+                </MenuButton>
+                <MenuButton
+                    onclick={() => quite()}
+                >
+                    Quit
+                </MenuButton>
             </RightButton>
         </MenuWrapper>
     );

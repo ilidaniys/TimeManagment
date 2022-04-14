@@ -18,13 +18,17 @@ const Button = styled.button`
     cursor: pointer;
     color: var(--stop-button-color);
   }
-
+  
+  :hover{
+    cursor: pointer;
+    color: var(--stop-button-color);
+  }
 `
 
 
 const MenuButton = (props) => {
     return (
-        <Button>
+        <Button onClick={props.onclick}>
             {props.children}
         </Button>
     );

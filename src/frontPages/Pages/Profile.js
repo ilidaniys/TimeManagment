@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
+import axios from "axios";
 
 
 const ProfileWrapper = styled.div`
@@ -107,6 +108,13 @@ const params = {
     ]
 }
 
+const user = () => {
+    axios
+        .get('/api/profile')
+        .then(res => {
+
+        })
+}
 
 const Profile = () => {
 

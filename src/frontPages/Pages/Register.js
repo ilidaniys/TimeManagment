@@ -5,7 +5,7 @@ import SubmitRegister from "../component/RegisterComponent/SubmitRegister";
 import LinkSingup from "../component/RegisterComponent/LinkSingup";
 import {
     RegisnterWrapper,
-    RegisterConteiner,
+    RegisterConteiner, RegisterWrapper,
     SubmitBlock
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 import SuccessMassage from "../component/RegisterComponent/SuccessMassage";
@@ -36,7 +36,7 @@ const Register = (props) => {
     const [validMatch, setValidMatch] = useState(false)
     const [matchFocus, setMatchFocus] = useState(false)
 
-    const [errMassage, setErrMassage] = useState('')
+    const [errMassage, setErrMassage] = useState(false)
     const [success, setSuccess] = useState(false)
 
 
@@ -62,108 +62,116 @@ const Register = (props) => {
     }, [user, email, pwd, matchPwd])
 
 
-    const handleSubmit = async (event) => {
-        // event.preventDefault()
-        const result = await axios
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios
             .post('http://localhost:5000/api/register', {
                 name: user,
                 email,
                 password: pwd,
                 repeat: matchPwd
             })
-            .then((res) =>{
+            .then((res) => {
                 console.log(res.data)
-                setSuccess(true)
+                setSuccess(res.data.newCandidate)
+                setErrMassage(res.data.errMassage)
             })
+            .catch((e) => {
+                console.log(e)
+            })
+
     }
 
     return (
-        <RegisnterWrapper height={'35rem'}>
-            { success
+        <RegisterWrapper height={'35rem'}>
+            {success
                 ? <SuccessMassage/>
                 : <RegisterConteiner onSubmit={handleSubmit}>
-                <InputRegister
-                    type={'text'}
-                    useRef={userRef}
-                    autoComplete={'off'}
-                    required={'true'}
-                    setState={setUser}
-                    ariaInvalid={validName ? 'false' : 'true'}
-                    ariaDesribedby={'uidnote'}
-                    onFocus={() => setUserFocus(true)}
-                    focus={userFocus}
-                    state={user}
-                    validState={validName}
-                    minnumber={'4 to 24 symbols'}
-                    text={'Only letters'}
-                >
-                    User Name
-                </InputRegister>
-                <InputRegister
-                    type={'text'}
-                    autoComplete={'off'}
-                    required={'true'}
-                    setState={setEmail}
-                    ariaInvalid={validEmail ? 'false' : 'true'}
-                    ariaDesribedby={'eidnote'}
-                    onFocus={() => setEmailFocus(true)}
-                    focus={emailFocus}
-                    state={email}
-                    validState={validEmail}
-                    minnumber={''}
-                    text={'only email requare!'}
-                >
-                    Email
-                </InputRegister>
-                <InputRegister
-                    type={'password'}
-                    autoComplete={'off'}
-                    required={'true'}
-                    setState={setPwd}
-                    ariaInvalid={validPwd ? 'false' : 'true'}
-                    ariaDesribedby={'pidnote'}
-                    onFocus={() => setPwdFocus(true)}
-                    focus={pwdFocus}
-                    // state={pwd}
-                    additionalState={pwd}
-                    validState={validPwd}
-                    minnumber={'8 to 24 symbols'}
-                    text={'You should use at least one Capital letter, one symbols and one numbers'}
-                >
-                    Password
-                </InputRegister>
-                <InputRegister
-                    type={'password'}
-                    autoComplete={'off'}
-                    required={'true'}
-                    setState={setMatchPwd}
-                    ariaInvalid={validMatch? 'false' : 'true'}
-                    ariaDesribedby={'matchnote'}
-                    onFocus={() => setMatchFocus(true)}
-                    focus={matchFocus}
-                    state={matchPwd}
-                    additionalState={matchPwd}
-                    validState={validMatch}
-                    minnumber={'8 to 24 symbols'}
-                    text={'You should use at least one Capital letter, one symbols and one numbers! And password should match!'}
-                >
-                    Confirm Password
-                </InputRegister>
-                <SubmitBlock>
-                    <LinkSingup
-                        tittle={'Already Register?'}
-                        text={'Sign In!'}
-                    />
-                    <SubmitRegister
-                    validName={validName}
-                    validEmail={validEmail}
-                    validPwd={validPwd}
-                    validMatch={validMatch}
-                    />
-                </SubmitBlock>
-            </RegisterConteiner>
+                    {errMassage
+                        ? <p> incorrect email, or already used </p>
+                        : null}
+                    <InputRegister
+                        type={'text'}
+                        useRef={userRef}
+                        autoComplete={'off'}
+                        required={'true'}
+                        setState={setUser}
+                        ariaInvalid={validName ? 'false' : 'true'}
+                        ariaDesribedby={'uidnote'}
+                        onFocus={() => setUserFocus(true)}
+                        focus={userFocus}
+                        state={user}
+                        validState={validName}
+                        minnumber={'4 to 24 symbols'}
+                        text={'Only letters'}
+                    >
+                        User Name
+                    </InputRegister>
+                    <InputRegister
+                        type={'text'}
+                        autoComplete={'off'}
+                        required={'true'}
+                        setState={setEmail}
+                        ariaInvalid={validEmail ? 'false' : 'true'}
+                        ariaDesribedby={'eidnote'}
+                        onFocus={() => setEmailFocus(true)}
+                        focus={emailFocus}
+                        state={email}
+                        validState={validEmail}
+                        minnumber={''}
+                        text={'only email requare!'}
+                    >
+                        Email
+                    </InputRegister>
+                    <InputRegister
+                        type={'password'}
+                        autoComplete={'off'}
+                        required={'true'}
+                        setState={setPwd}
+                        ariaInvalid={validPwd ? 'false' : 'true'}
+                        ariaDesribedby={'pidnote'}
+                        onFocus={() => setPwdFocus(true)}
+                        focus={pwdFocus}
+                        // state={pwd}
+                        additionalState={pwd}
+                        validState={validPwd}
+                        minnumber={'8 to 24 symbols'}
+                        text={'You should use at least one Capital letter, one symbols and one numbers'}
+                    >
+                        Password
+                    </InputRegister>
+                    <InputRegister
+                        type={'password'}
+                        autoComplete={'off'}
+                        required={'true'}
+                        setState={setMatchPwd}
+                        ariaInvalid={validMatch ? 'false' : 'true'}
+                        ariaDesribedby={'matchnote'}
+                        onFocus={() => setMatchFocus(true)}
+                        focus={matchFocus}
+                        state={matchPwd}
+                        additionalState={matchPwd}
+                        validState={validMatch}
+                        minnumber={'8 to 24 symbols'}
+                        text={'You should use at least one Capital letter, one symbols and one numbers! And password should match!'}
+                    >
+                        Confirm Password
+                    </InputRegister>
+                    <SubmitBlock>
+                        <LinkSingup
+                            tittle={'Already Register?'}
+                            text={'Sign In!'}
+                        />
+                        <SubmitRegister
+                            validName={validName}
+                            validEmail={validEmail}
+                            validPwd={validPwd}
+                            validMatch={validMatch}
+                        />
+                    </SubmitBlock>
+                </RegisterConteiner>
             }
-        </RegisnterWrapper>
+        </RegisterWrapper>
     );
 };
 

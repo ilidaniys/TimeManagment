@@ -50,8 +50,8 @@ const CounterContext = ({children}) => {
 
     return (
         <CounterProvider.Provider value={{
-            currentCounter: currentCounter,
-            startCounter: startCounter,
+            currentCounter,
+            startCounter,
             startCounterHandler,
             endCounterHandler
         }}>

@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
-export const RegisnterWrapper = styled.div`
+export const RegisterWrapper = styled.div`
   height: ${props => props.height || '10rem'};
   width: 50%;
   margin-right: auto;
   margin-left: auto;
   background: var(--registr-button-color);
+  position: inherit;
+  padding-top: 5rem;
   margin-top: 5rem;
 `
 export const RegisterConteiner = styled.form`
-  margin-top: 1.2rem;
+  position: inherit;
+  //margin-top: 1.2rem;
   width: 100%;
   height: 90%;
   display: flex;
