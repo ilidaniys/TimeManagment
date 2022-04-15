@@ -11,11 +11,16 @@ export const useAuth = () => {
 
 const AuthContext = ({children}) => {
 
-    const [auth, setAuth] = useState(false)
+    const [auth, setAuth] = useState(true)
+
+    function authhandler (status) {
+        setAuth(status)
+    }
+
 
     return (
         <AuthProvider.Provider
-            value={auth}
+            value={{auth, authhandler}}
         >
             {children}
         </AuthProvider.Provider>

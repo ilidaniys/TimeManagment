@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const LauoutWrapper = styled.div`
   //z-index: 1;
   width: 100vw;
-  //margin-top: var(--header-height);
+  top: var(--header-height);
   min-height: var(--main-height);
   position: relative;
   background: var(--main-color);
@@ -18,7 +18,9 @@ const ContentWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  overflow-x: hidden
+  position: relative;
+  overflow-x: hidden;
+  //top: var(--header-height)
   
 `
 

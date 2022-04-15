@@ -4,7 +4,6 @@ import InputRegister from "../component/RegisterComponent/InputRegister";
 import SubmitRegister from "../component/RegisterComponent/SubmitRegister";
 import LinkSingup from "../component/RegisterComponent/LinkSingup";
 import {
-    RegisnterWrapper,
     RegisterConteiner, RegisterWrapper,
     SubmitBlock
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";

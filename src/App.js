@@ -7,7 +7,7 @@ import Profile from "./frontPages/Pages/Profile";
 import Register from "./frontPages/Pages/Register";
 import LogIn from "./frontPages/Pages/LogIn";
 import CounterContext from "./frontPages/Context/CounterContext/CounterContext";
-import AuthContext, {useAuth} from "./frontPages/Context/authContext/AuthContext";
+import {useAuth} from "./frontPages/Context/authContext/AuthContext";
 import AdminPanel from "./frontPages/Pages/AdminPanel";
 import Hoc from "./frontPages/hoc/Hoc";
 
@@ -16,10 +16,9 @@ function App() {
     const auth = useAuth()
 
     return (
-        <AuthContext>
             <CounterContext>
                 <Hoc>
-                    {auth
+                    {auth?.auth
                         ? <BrowserRouter>
                             <Header>
                             </Header>
@@ -38,20 +37,21 @@ function App() {
                                 </Routes>
                             </Lauout>
                         </BrowserRouter>
-                        : <BrowserRouter>
+                        : <div>
+                            <BrowserRouter basename={'/login'}>
                                 <Routes>
-                                    <Route path={'/logIn'} element={
+                                    <Route path={'/login'} element={
                                         <LogIn/>
                                     }/>
                                     <Route path={'/register'} element={
                                         <Register/>
                                     }/>
                                 </Routes>
-                        </BrowserRouter>
+                            </BrowserRouter>
+                        </div>
                     }
                 </Hoc>
             </CounterContext>
-        </AuthContext>
     );
 }
 

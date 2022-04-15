@@ -6,13 +6,13 @@ export const RegisterWrapper = styled.div`
   margin-right: auto;
   margin-left: auto;
   background: var(--registr-button-color);
-  position: inherit;
-  padding-top: 5rem;
-  margin-top: 5rem;
+  position: relative;
+  //padding-top: 5rem;
+  top: 5rem;
 `
 export const RegisterConteiner = styled.form`
   position: inherit;
-  //margin-top: 1.2rem;
+  padding-top: 1rem;
   width: 100%;
   height: 90%;
   display: flex;

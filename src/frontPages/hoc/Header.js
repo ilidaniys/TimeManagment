@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Menu from "../Header/Menu";
 
 const HeaderWrapper = styled.div`
+  z-index: 100;
   width: 100vw;
   height: 5rem;
   position: fixed;

@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import MenuButton from "../component/MenuButton";
 import {NavLink} from "react-router-dom";
+import {useNavigate} from 'react-router';
 import axios from "axios";
+import {useAuth} from "../Context/authContext/AuthContext";
 
 const MenuWrapper = styled.div`
   height: 100%;
@@ -19,13 +21,26 @@ const RightButton = styled.div`
   display: flex;
 `
 
-const quite = () => {
-    axios
-        .get('http://localhost:5000/api/logout')
-        .then()
-}
+
+
 
 const Menu = () => {
+    const auth = useAuth()
+    const navigate = useNavigate()
+
+
+    const quite = () => {
+        axios
+            .get('http://localhost:5000/api/logout')
+            .then( (res) => {
+                auth.authhandler(res.data.auth)
+                navigate('/login')
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+
     return (
         <MenuWrapper>
             <LeftButton>

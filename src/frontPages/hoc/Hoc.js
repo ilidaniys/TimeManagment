@@ -5,7 +5,8 @@ const HocWrapper = styled.main`
   width: 100vw;
   min-height: 100vh;
   background: #463F3A;
-  //position: absolute;
+  position: relative;
+  margin: 0;
   
 `
 
