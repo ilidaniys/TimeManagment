@@ -16,42 +16,44 @@ function App() {
     const auth = useAuth()
 
     return (
-            <CounterContext>
-                <Hoc>
-                    {auth?.auth
-                        ? <BrowserRouter>
-                            <Header>
-                            </Header>
-                            <Lauout>
-                                <Routes>
-                                    <Route path='/' exact element={
-                                        <Home/>
-                                    }/>
-                                    <Route path='/profile' element={
-                                        <Profile/>
-                                    }/>
-                                    <Route path={'/AdminPanel'} element={
-                                        <AdminPanel/>
-                                    }/>
+        <CounterContext>
+            <Hoc>
+                {auth?.auth
+                    ? <BrowserRouter>
+                        <Header>
+                        </Header>
+                        <Lauout>
+                            <Routes>
+                                <Route path='/' exact element={
+                                    <Home/>
+                                }/>
+                                <Route path='/profile' element={
+                                    <Profile/>
+                                }/>
+                                <Route path={'/AdminPanel'} element={
+                                    <AdminPanel/>
+                                }/>
 
-                                </Routes>
-                            </Lauout>
-                        </BrowserRouter>
-                        : <div>
-                            <BrowserRouter basename={'/login'}>
-                                <Routes>
-                                    <Route path={'/login'} element={
-                                        <LogIn/>
-                                    }/>
-                                    <Route path={'/register'} element={
-                                        <Register/>
-                                    }/>
-                                </Routes>
-                            </BrowserRouter>
-                        </div>
-                    }
-                </Hoc>
-            </CounterContext>
+                            </Routes>
+                        </Lauout>
+                    </BrowserRouter>
+                    : <BrowserRouter>
+                        <Routes>
+                            <Route path={'/'} element={
+                                <LogIn/>
+                            }/>
+                            <Route path={'/login'} element={
+                                <LogIn/>
+                            }/>
+                            <Route path={'/register'} element={
+                                <Register/>
+                            }/>
+                        </Routes>
+                    </BrowserRouter>
+
+                }
+            </Hoc>
+        </CounterContext>
     );
 }
 

@@ -160,6 +160,7 @@ const Register = (props) => {
                         <LinkSingup
                             tittle={'Already Register?'}
                             text={'Sign In!'}
+                            path={'/login'}
                         />
                         <SubmitRegister
                             validName={validName}

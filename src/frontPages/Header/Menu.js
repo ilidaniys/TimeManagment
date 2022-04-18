@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuButton from "../component/MenuButton";
-import {NavLink} from "react-router-dom";
-import {useNavigate} from 'react-router';
+import {NavLink,useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useAuth} from "../Context/authContext/AuthContext";
 
@@ -22,8 +21,6 @@ const RightButton = styled.div`
 `
 
 
-
-
 const Menu = () => {
     const auth = useAuth()
     const navigate = useNavigate()
@@ -33,8 +30,10 @@ const Menu = () => {
         axios
             .get('http://localhost:5000/api/logout')
             .then( (res) => {
-                auth.authhandler(res.data.auth)
                 navigate('/login')
+                auth.authHandler(res.data.auth)
+                localStorage.clear()
+                console.log(res.data)
             })
             .catch((e) => {
                 console.log(e)

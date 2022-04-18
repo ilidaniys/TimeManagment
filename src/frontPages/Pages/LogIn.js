@@ -7,10 +7,13 @@ import {
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 import InputLogin from "../component/RegisterComponent/InputLogin";
 import {useAuth} from "../Context/authContext/AuthContext";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const LogIn = () => {
 
     const auth = useAuth()
+    const navigate = useNavigate()
 
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
@@ -54,13 +57,29 @@ const LogIn = () => {
         }
     }, [pwd])
 
+    useEffect(() => {
+        setErrMassage('')
+    }, [user, email, pwd])
+
     const handleSubmit = (event) => {
         event.preventDefault()
+        axios
+            .post('http://localhost:5000/api/login')
+            .then((res) => {
+                console.log(res.data)
+                navigate('/')
+                setErrMassage(res.data.errMassage)
+                auth.authHandler(res.data.status)
+                localStorage.setItem('token',res.data.accessToken)
+            })
+            .catch((e) => {
+                console.log(e)
+            })
     }
 
     return (
         <RegisterWrapper height={'25rem'}>
-            <RegisterConteiner>
+            <RegisterConteiner onSubmit={handleSubmit}>
                 <InputLogin
                     type={'text'}
                     autoComplete={'off'}
@@ -98,6 +117,7 @@ const LogIn = () => {
                     <LinkSingup
                         tittle={'Not yet registered??'}
                         text={'Register!'}
+                        path={'/register'}
                     />
                     <SubmitRegister
                         validName={validName}
