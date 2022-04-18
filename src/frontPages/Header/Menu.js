@@ -4,6 +4,7 @@ import MenuButton from "../component/MenuButton";
 import {NavLink,useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useAuth} from "../Context/authContext/AuthContext";
+import {logout} from "../Context/authContext/createAuthProvider";
 
 const MenuWrapper = styled.div`
   height: 100%;
@@ -31,6 +32,7 @@ const Menu = () => {
             .get('http://localhost:5000/api/logout')
             .then( (res) => {
                 navigate('/login')
+                logout()
                 auth.authHandler(res.data.auth)
                 localStorage.clear()
                 console.log(res.data)

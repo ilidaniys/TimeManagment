@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Redirect} from 'react-router-dom'
 import Lauout from "./frontPages/hoc/Lauout";
 import Header from "./frontPages/hoc/Header";
 import styles from './frontPages/Styled/styles.css';
@@ -33,13 +33,14 @@ function App() {
                                 <Route path={'/AdminPanel'} element={
                                     <AdminPanel/>
                                 }/>
+                                <Route path={'*'} element={<Home/>}/>
 
                             </Routes>
                         </Lauout>
                     </BrowserRouter>
                     : <BrowserRouter>
                         <Routes>
-                            <Route path={'/'} element={
+                            <Route path={'*'} element={
                                 <LogIn/>
                             }/>
                             <Route path={'/login'} element={

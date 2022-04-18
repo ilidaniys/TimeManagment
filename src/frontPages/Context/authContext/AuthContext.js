@@ -15,7 +15,7 @@ const AuthContext = ({children}) => {
 
     useEffect(() => {
         const checkAuth = () => {
-            const token = localStorage.getItem('token')
+            const token = localStorage.getItem('TOKEN')
             console.log(token)
             if (token) {
             setAuth(true)
@@ -35,6 +35,8 @@ const AuthContext = ({children}) => {
     function authHandler(status) {
         setAuth(status)
     }
+
+    
 
 
     return (

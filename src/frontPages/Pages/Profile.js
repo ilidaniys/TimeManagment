@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import axios from "axios";
+import {authFetch} from "../Context/authContext/createAuthProvider";
 
 
 const ProfileWrapper = styled.div`
@@ -108,19 +109,27 @@ const params = {
     ]
 }
 
-const user = () => {
-    axios
-        .get('/api/profile')
-        .then(res => {
-
-        })
-}
 
 const Profile = () => {
 
+    useEffect(() => {
+        const user = async () => {
+           authFetch('http://localhost:5000/api/profile', {
+               method: 'GET',
+           })
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch ((e) => {
+                console.log(e)
+            })
+        }
+        user()
+    }, [])
+
 
     const renderCards = () => {
-       return params.session.map(({startDate, endDate}, index) => {
+        return params.session.map(({startDate, endDate}, index) => {
             const counter = startDate - endDate
             const time = SecondToDate(counter)
 

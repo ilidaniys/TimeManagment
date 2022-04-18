@@ -9,6 +9,7 @@ import InputLogin from "../component/RegisterComponent/InputLogin";
 import {useAuth} from "../Context/authContext/AuthContext";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {login} from "../Context/authContext/createAuthProvider";
 
 const LogIn = () => {
 
@@ -64,14 +65,19 @@ const LogIn = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
-            .post('http://localhost:5000/api/login')
-            .then((res) => {
-                console.log(res.data)
-                navigate('/')
-                setErrMassage(res.data.errMassage)
-                auth.authHandler(res.data.status)
-                localStorage.setItem('token',res.data.accessToken)
+            .post('http://localhost:5000/api/login', {
+                user, email, pwd
             })
+            .then((res) => {
+                // console.log(res.data)
+                navigate('/')
+                if (res.data) {
+                    login()
+                    auth.authHandler(res.data.status)
+                    return res.data.accessToken
+                }
+            })
+            .then(token => login(token))
             .catch((e) => {
                 console.log(e)
             })
