@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
@@ -111,13 +111,27 @@ const params = {
 
 
 const Profile = () => {
+
+    const [name, setName]= useState('')
+    const [email, setEmail] = useState('')
+    const [spendTime, setSpendTime] = useState('')
+    const [sessions, setSessions] = useState('')
+
+
+
     useEffect(() => {
         const user = async () => {
            await authFetch('http://localhost:5000/api/profile', {
                method: 'GET',
-           })
+           }, 'get')
                 .then(res => {
-                    console.log(res.data)
+                    console.log('profile data', res.data)
+                    setName(res.data.name)
+                    setEmail(res.data.email)
+                    setSpendTime(res.data.allTime)
+                    console.log(res.data.sessions)
+                    setSessions(res.data.sessions)
+                    console.log(sessions)
                 })
                 .catch ((e) => {
                 console.log(e)
@@ -149,11 +163,11 @@ const Profile = () => {
                 Your contact info:
                 <div>
                     <h1>Name:</h1>
-                    <Red>{params.userName}</Red>
+                    <Red>{name}</Red>
                     <h2>Email: </h2>
-                    <Red>{params.userEmail}</Red>
+                    <Red>{email}</Red>
                 </div>
-                <h3>All your spend time for work: <Red>{params.allTime}</Red></h3>
+                <h3>All your spend time for work: <Red>{spendTime}</Red></h3>
             </ProfileInfo>
             Your session:
             <div className={'wrapperCard'}>

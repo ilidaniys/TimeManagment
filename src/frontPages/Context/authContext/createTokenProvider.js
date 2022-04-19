@@ -24,6 +24,7 @@ const createTokenProvider = () => {
     const getToken = async () => {
         if (!_token) return null
         if (isExpired(getExpirationDate(_token.accessToken))) {
+            // console.log(isExpired(getExpirationDate(_token.accessToken)))
             const updateToken = axios.get('http://localhost:5000/token')
                 .then(res => res.json())
                 .catch(e => console.log(e))
@@ -48,12 +49,11 @@ const createTokenProvider = () => {
 
     const setToken = (token) => {
         if (token) {
-
             localStorage.setItem('TOKEN', token)
         } else {
             localStorage.removeItem('TOKEN')
         }
-        _token = token
+        _token.accessToken = token
         notify()
     }
 
