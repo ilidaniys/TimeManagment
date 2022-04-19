@@ -111,10 +111,9 @@ const params = {
 
 
 const Profile = () => {
-
     useEffect(() => {
         const user = async () => {
-           authFetch('http://localhost:5000/api/profile', {
+           await authFetch('http://localhost:5000/api/profile', {
                method: 'GET',
            })
                 .then(res => {

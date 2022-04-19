@@ -69,13 +69,8 @@ const LogIn = () => {
                 user, email, pwd
             })
             .then((res) => {
-                // console.log(res.data)
-                navigate('/')
-                if (res.data) {
-                    login()
-                    auth.authHandler(res.data.status)
-                    return res.data.accessToken
-                }
+                auth.authHandler(res.data.status)
+                return res.data.accessToken
             })
             .then(token => login(token))
             .catch((e) => {
