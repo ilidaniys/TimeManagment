@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
-import axios from "axios";
+
 import {authFetch} from "../Context/authContext/createAuthProvider";
 
 
@@ -68,94 +68,63 @@ const Red = styled.p`
   color: #d81159
 `
 
-const params = {
-    userName: 'Test',
-    userEmail: 'test@mail.com',
-    allTime: '30:20:10',
-    session: [
-        {
-            startDate: 10,
-            endDate: 5,
-        },
-        {
-            startDate: 200000,
-            endDate: 1000,
-        },
-        {
-            startDate: 10,
-            endDate: 5,
-        },
-        {
-            startDate: 200000,
-            endDate: 1000,
-        },
-        {
-            startDate: 10,
-            endDate: 5,
-        },
-        {
-            startDate: 200000,
-            endDate: 1000,
-        },
-        {
-            startDate: 10,
-            endDate: 5,
-        },
-        {
-            startDate: 200000,
-            endDate: 1000,
-        },
-
-    ]
-}
-
-
 const Profile = () => {
 
-    const [name, setName]= useState('')
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    const [spendTime, setSpendTime] = useState('')
+    const [spendTime, setSpendTime] = useState(0)
     const [sessions, setSessions] = useState('')
-
 
 
     useEffect(() => {
         const user = async () => {
-           await authFetch('http://localhost:5000/api/profile', {
-               method: 'GET',
-           }, 'get')
+            await authFetch('http://localhost:5000/api/profile', {
+                method: 'GET',
+            }, 'get')
                 .then(res => {
-                    console.log('profile data', res.data)
+                    // console.log('profile data', res.data)
                     setName(res.data.name)
                     setEmail(res.data.email)
-                    setSpendTime(res.data.allTime)
-                    console.log(res.data.sessions)
+                    setSpendTime(SecondToDate(res.data.allTime))
                     setSessions(res.data.sessions)
-                    console.log(sessions)
                 })
-                .catch ((e) => {
-                console.log(e)
-            })
+                .catch((e) => {
+                    console.log(e)
+                })
         }
+
         user()
+
     }, [])
 
 
     const renderCards = () => {
-        return params.session.map(({startDate, endDate}, index) => {
-            const counter = startDate - endDate
-            const time = SecondToDate(counter)
+        if (sessions) {
+            console.log('sessions', sessions)
+            // sessions.session.parse
+            return sessions.session.map(({startTime, endTime}, index) => {
+                const startDate = new moment(startTime).format('MMMM Do YYYY, h:mm:ss a')
+                const endDate = new moment(endTime).format('MMMM Do YYYY, h:mm:ss a')
+                const startDateTime = new moment(startTime)
+                const endDateTime = new moment(endTime)
+                console.log(startDate)
+                const counter = endDateTime - startDateTime
+                console.log(counter)
+                const time = SecondToDate(counter)
 
-            return (
-                <SessionCard
-                    key={index}
-                    startDate={startDate}
-                    endDate={endDate}
-                    time={time}
-                />
-            )
-        })
+                return (
+                    <SessionCard
+                        key={index}
+                        startDate={startDate}
+                        endDate={endDate}
+                        time={time}
+                    />
+                )
+            })
+        }
+        return null
     }
+
 
     return (
         <ProfileWrapper>

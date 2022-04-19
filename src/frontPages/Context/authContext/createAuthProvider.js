@@ -12,7 +12,7 @@ export const createAuthProvider = () => {
         tokenProvider.setToken(null)
     }
 
-    const authFetch = async (input, init) => {
+    const authFetch = async (input, init, type, data) => {
         const token = await tokenProvider.getToken()
         console.log(token)
         init = init || {}
@@ -21,7 +21,12 @@ export const createAuthProvider = () => {
             ...init.headers,
             Authorization: `Bearer ${token}`
         }
-        return await axios.get(input, init)
+        if (type === 'get'){
+            return await axios.get(input, init)
+        }
+        if (type === 'post'){
+            return await axios.post(input, data, init)
+        }
     }
 
     const useAuth = () => {

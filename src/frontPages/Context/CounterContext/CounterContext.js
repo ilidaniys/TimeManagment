@@ -1,8 +1,6 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import moment from "moment";
 import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
-import axios from "axios";
-import {authFetch, login} from "../authContext/createAuthProvider";
+import {authFetch} from "../authContext/createAuthProvider";
 
 
 const CounterProvider = createContext()
@@ -18,7 +16,8 @@ const CounterContext = ({children}) => {
     const [endCounter, setEndCounter] = useState('')
 
     const startCounterHandler = async () => {
-        const startData = moment().toDate()
+        // const startData = moment().format('MMMM Do YYYY, h:mm:ss')
+        const startData = new Date()
         console.log('start', startData)
         await authFetch('http://localhost:5000/api/startTime', {
             method: 'POST',
@@ -28,7 +27,8 @@ const CounterContext = ({children}) => {
         setStartCounter(startData)
     }
     const endCounterHandler = async () => {
-        const endData = moment().toDate()
+        // const endData = moment().format('MMMM Do YYYY, h:mm:ss')
+        const endData = new Date()
         await authFetch('http://localhost:5000/api/endTime', {
             method: 'POST',
         }, 'post', {endData})
@@ -47,7 +47,10 @@ const CounterContext = ({children}) => {
                 clearInterval(interval)
                 return
             }
-            const data = moment().toDate()
+            // const data = moment().format('MMMM Do YYYY, h:mm:ss')
+            const data = new Date()
+            console.log(typeof data)
+            // console.log('second',second)
             const counter = data - startCounter
             const time = SecondToDate(counter)
 

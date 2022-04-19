@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import axios from "axios";
+
 
 const AuthProvider = createContext()
 
@@ -16,8 +16,8 @@ const AuthContext = ({children}) => {
     useEffect(() => {
         const checkAuth = () => {
             const token = localStorage.getItem('TOKEN')
-            console.log(token)
-            if (token) {
+            console.log(token.length)
+            if (token.length >= 17) {
             setAuth(true)
             }
         }
