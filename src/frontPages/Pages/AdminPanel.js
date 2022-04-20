@@ -3,6 +3,7 @@ import styled from "styled-components";
 import UserCard from "../component/Session/UserCard";
 import {authFetch} from "../Context/authContext/createAuthProvider";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
+import {useParams} from "react-router";
 
 
 const AdminPanelWrapper = styled.div`
@@ -29,7 +30,8 @@ const AdminPanelWrapper = styled.div`
 const AdminPanel = () => {
 
     const [usersList, setUsersList] = useState('')
-
+    const { id } = useParams()
+    console.log('id', id)
     useEffect(() => {
       const userList = async () => {
          await authFetch('http://localhost:5000/api/adminList', {

@@ -49,8 +49,10 @@ const CounterContext = ({children}) => {
             }, 'get')
                 .then(res => {
                     if (res.data.unSession) {
-                        const startTime = moment(res.data.startTime)
-                        console.log(startTime)
+                        console.log('resdata',res.data)
+                        // console.log(res.data.startTime)
+                        const startTime = moment(res.data.unSession.startTime)
+                        console.log('startTime', startTime)
                         setStartCounter(startTime)
                     }
                     if (res.data.adminRole){
@@ -71,14 +73,14 @@ const CounterContext = ({children}) => {
                 return
             }
             // const data = moment().format('MMMM Do YYYY, h:mm:ss')
+            // console.log(startCounter)
             const data = new Date()
-            // console.log(typeof data)
-            // console.log('second',second)
+            // console.log(data)
             const counter = data - startCounter
-            const time = SecondToDate(counter)
-
-            console.log(time)
             console.log(counter)
+            const time = SecondToDate(counter)
+            // console.log(time)
+            // console.log(counter)
             setCurrentCounter(time)
         }, 1000)
 

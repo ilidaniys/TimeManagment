@@ -4,7 +4,7 @@ import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import {authFetch} from "../Context/authContext/createAuthProvider";
-import {useParams} from "react-router";
+import {useParams} from "react-router-dom";
 
 
 const ProfileWrapper = styled.div`
@@ -64,9 +64,9 @@ const Profile = () => {
     useEffect(() => {
         const user = async () => {
             let url = `http://localhost:5000/api/profile`
-            console.log('url', url)
             if (id && id !== ''){
                 url += `/${id}`
+                console.log('url+id', url)
             }
             await authFetch(url, {
                 method: 'GET',
