@@ -12,7 +12,7 @@ export const RegisterWrapper = styled.div`
 `
 export const RegisterConteiner = styled.form`
   position: inherit;
-  padding-top: 1rem;
+  padding-top: 2rem;
   width: 100%;
   height: 90%;
   display: flex;
