@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
+import {authFetch} from "../../Context/authContext/createAuthProvider";
 
 const UserCardWrapper = styled.div`
   box-sizing: border-box;
@@ -29,15 +30,21 @@ const UserCardWrapper = styled.div`
       font-size: 1.5rem;
     }
   }
-  
-  
 `
 
 
 const UserCard = ({userName, userEmail, time, session, id}) => {
+    const userProfileId = () => {
+        authFetch(`http://localhost:5000/api/adminList/profile${id}`, {
+            method: 'GET'
+        }, 'get')
+            .then(res => console.log(res.data))
+            .catch(e => console.log(e))
+    }
+
     return (
         <UserCardWrapper>
-            <NavLink to={`/profile/${id}`}>
+            <NavLink to={`/profile/${id}`} onClick={() => userProfileId()}>
                 <h1>User Name:</h1>
                 <p>{userName}</p>
                 <h1>User email:</h1>

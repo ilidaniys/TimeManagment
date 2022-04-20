@@ -2,6 +2,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
 import {authFetch} from "../authContext/createAuthProvider";
 import moment from "moment";
+import {useAuth} from "../authContext/AuthContext";
 
 
 const CounterProvider = createContext()
@@ -15,6 +16,7 @@ const CounterContext = ({children}) => {
     const [startCounter, setStartCounter] = useState('')
     const [currentCounter, setCurrentCounter] = useState('00:00:00')
     const [endCounter, setEndCounter] = useState('')
+    const auth = useAuth()
 
     const startCounterHandler = async () => {
         // const startData = moment().format('MMMM Do YYYY, h:mm:ss')
@@ -48,9 +50,15 @@ const CounterContext = ({children}) => {
             }, 'get')
                 .then(res => {
                     console.log(res.data)
-                    if (res.data.startTime) {
+                    console.log('session',res.data.unSession)
+                    if (res.data.unSession) {
                         const startTime = moment(res.data.startTime)
                         setStartCounter(startTime)
+                    }
+                    if (res.data.adminRole){
+                        const adminRole = res.data.adminRole
+                        console.log(adminRole)
+                        auth.adminStatusHandler(adminRole)
                     }
                     // setStartCounter(res.data)
                 })

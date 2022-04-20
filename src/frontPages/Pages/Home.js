@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import MainButton from "../component/MainButton";
 import {useCounter} from "../Context/CounterContext/CounterContext";
 
-// const date = new Date(counter).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
-// const date2 = new Date(counter).getDate() - 1
-
 const HomeWrapper = styled.main`
   display: flex;
   position: relative;
