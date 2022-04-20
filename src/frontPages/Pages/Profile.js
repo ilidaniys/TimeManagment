@@ -8,64 +8,49 @@ import {authFetch} from "../Context/authContext/createAuthProvider";
 
 
 const ProfileWrapper = styled.div`
-  margin-top: 2rem;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin: 2rem;
   padding-bottom: 2rem;
-  margin-bottom: 3rem;
   font-weight: 600;
   font-size: 2.3rem;
-  color: #463F3A;
+  color: var(--gray-0);
 
   > .wrapperCard {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+
   }
 
 `
 const ProfileInfo = styled.div`
+  
   display: flex;
+
   gap: 1rem;
   flex-direction: column;
   font-weight: 600;
   font-size: 2.3rem;
-  color: #463F3A;
+  color: var(--gray-0);
 
   > div {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
 
-
-    > h1 {
-      display: flex;
-      gap: 1rem;
-      font-weight: 500;
-      font-size: 2rem;
-    }
-
-    > h2 {
-      display: flex;
-      gap: 1rem;
-      font-weight: 500;
-      font-size: 2rem;
-
+    
+    
+    > p{
+      font-weight: 600;
+      font-size: 2.3rem;
     }
   }
-
-  > h3 {
-    font-weight: 500;
-    font-size: 2rem;
-  }
-`
-
-const Red = styled.p`
-  color: #d81159
+  
 `
 
 const Profile = () => {
@@ -129,14 +114,16 @@ const Profile = () => {
     return (
         <ProfileWrapper>
             <ProfileInfo>
-                Your contact info:
+                Contact info
                 <div>
-                    <h1>Name:</h1>
-                    <Red>{name}</Red>
-                    <h2>Email: </h2>
-                    <Red>{email}</Red>
+                    <p>Name:</p>
+                    <p>{name}</p>
+                    <p>Email: </p>
+                    <p>{email}</p>
+                    <p>All your spend time for work:</p>
+                    <p>{spendTime}</p>
                 </div>
-                <h3>All your spend time for work: <Red>{spendTime}</Red></h3>
+
             </ProfileInfo>
             Your session:
             <div className={'wrapperCard'}>

@@ -8,15 +8,16 @@ import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 const AdminPanelWrapper = styled.div`
   width: 100%;
   padding: 1rem 0;
-  margin: 1rem 0;
+  margin: 1rem 4rem;
 
 
   >p{
+    color: var(--gray-0);
     font-size: 2.2rem;
     font-weight: 600;
   }
   > div {
-    margin-left: 2rem;
+    //margin-left: 2rem;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -24,58 +25,6 @@ const AdminPanelWrapper = styled.div`
     gap: 2rem;
   }
 `
-
-const userDate = [
-    {
-        id: 1,
-        userName: 'Test',
-        userEmail: 'test@mail.com',
-        allTime: '30:20:10',
-        session: [
-            {
-                startDate: 10,
-                endDate: 5,
-            },
-            {
-                startDate: 200000,
-                endDate: 1000,
-            },
-        ]
-    },
-    {
-        id: 2,
-        userName: 'Test',
-        userEmail: 'test@mail.com',
-        allTime: '30:20:10',
-        session: [
-            {
-                startDate: 10,
-                endDate: 5,
-            },
-            {
-                startDate: 200000,
-                endDate: 1000,
-            },
-        ]
-    },
-    {
-        id: 3,
-        userName: 'Test',
-        userEmail: 'test@mail.com',
-        allTime: '30:20:10',
-        session: [
-            {
-                startDate: 10,
-                endDate: 5,
-            },
-            {
-                startDate: 200000,
-                endDate: 1000,
-            },
-        ]
-    },
-]
-
 
 const AdminPanel = () => {
 

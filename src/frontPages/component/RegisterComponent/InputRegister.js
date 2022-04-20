@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -68,11 +68,16 @@ const InputWrapper = styled.div`
   }
 
   .instructions {
+    margin-top: .1rem;
+    //margin-left: .1rem;
     display: block;
-    font-size: .8rem;
-    color: #d81159;
+    font-size: 1rem;
+    color: var(--red-8);
+    line-height: var(--font-lineheight-0);
     > .icon{
-      margin: 0 .3rem 0 0;
+      font-size: 1rem;
+      width: 1rem;
+      margin: .2rem .3rem 0 0;
     }
   }
 
@@ -118,8 +123,8 @@ const InputRegister = ({
                 className={(focus && (state !== undefined ? state : true) && !validState) ? 'instructions' : 'offScreen'}
                 >
                 <FontAwesomeIcon icon={faInfoCircle} className={'icon'}/>
-                {minnumber || 'no matter'}<br/>
-                {text}!
+                {`${minnumber} and ${text}`}
+
             </p>
             <div className={'Text'}>
                 {children}

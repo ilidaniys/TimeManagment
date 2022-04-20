@@ -17,7 +17,6 @@ const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const Register = (props) => {
 
     const userRef = useRef()
-    const errRef = useRef()
 
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
@@ -82,7 +81,7 @@ const Register = (props) => {
     }
 
     return (
-        <RegisterWrapper height={'35rem'}>
+        <RegisterWrapper height={'40rem'}>
             {success
                 ? <SuccessMassage/>
                 : <RegisterConteiner onSubmit={handleSubmit}>
@@ -102,7 +101,7 @@ const Register = (props) => {
                         state={user}
                         validState={validName}
                         minnumber={'4 to 24 symbols'}
-                        text={'Only letters'}
+                        text={'only letters'}
                     >
                         User Name
                     </InputRegister>
@@ -135,7 +134,7 @@ const Register = (props) => {
                         additionalState={pwd}
                         validState={validPwd}
                         minnumber={'8 to 24 symbols'}
-                        text={'You should use at least one Capital letter, one symbols and one numbers'}
+                        text={'you should use at least one Capital letter, one symbols and one numbers'}
                     >
                         Password
                     </InputRegister>
@@ -151,8 +150,8 @@ const Register = (props) => {
                         state={matchPwd}
                         additionalState={matchPwd}
                         validState={validMatch}
-                        minnumber={'8 to 24 symbols'}
-                        text={'You should use at least one Capital letter, one symbols and one numbers! And password should match!'}
+                        minnumber={'As in password!'}
+                        text={'password should match!'}
                     >
                         Confirm Password
                     </InputRegister>

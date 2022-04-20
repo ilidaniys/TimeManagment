@@ -38,9 +38,9 @@ const UserCard = ({userName, userEmail, time, session, id}) => {
     return (
         <UserCardWrapper>
             <NavLink to={`/profile/${id}`}>
-                <h1>User Name:</h1>
+                <h1>Name:</h1>
                 <p>{userName}</p>
-                <h1>User email:</h1>
+                <h1>Email:</h1>
                 <p>{userEmail}</p>
                 <h1> Duration of session:</h1>
                 <p> {time}</p>

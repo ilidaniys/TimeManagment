@@ -20,7 +20,7 @@ export const RegisterConteiner = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 1.2rem;
+  gap: 2rem;
   
   >p {
     font-size: var(--font-weight-6);

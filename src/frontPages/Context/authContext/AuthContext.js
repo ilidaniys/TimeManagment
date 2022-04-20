@@ -16,10 +16,14 @@ const AuthContext = ({children}) => {
     useEffect(() => {
         const checkAuth = () => {
             const token = localStorage.getItem('TOKEN')
-            console.log(token.length)
-            if (token.length >= 17) {
-            setAuth(true)
+            if (token) {
+                if (token.length >= 17) {
+                    setAuth(true)
+                }
+            } else {
+                setAuth(false)
             }
+
         }
         checkAuth()
     }, [])
