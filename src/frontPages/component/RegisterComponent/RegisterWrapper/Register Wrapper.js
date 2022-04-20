@@ -20,6 +20,11 @@ export const RegisterConteiner = styled.form`
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
+   > p {
+     font-size: 1.3rem;
+     font-weight: 700;
+     color: #d81159;
+   }
 `
 export const SubmitBlock = styled.div`
   display: flex;

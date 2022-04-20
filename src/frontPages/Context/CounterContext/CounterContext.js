@@ -21,7 +21,6 @@ const CounterContext = ({children}) => {
     const startCounterHandler = async () => {
         // const startData = moment().format('MMMM Do YYYY, h:mm:ss')
         const startData = new Date()
-        console.log('start', startData)
         await authFetch('http://localhost:5000/api/startTime', {
             method: 'POST',
         }, 'post', {startData})
@@ -49,15 +48,12 @@ const CounterContext = ({children}) => {
                 method: 'GET'
             }, 'get')
                 .then(res => {
-                    console.log(res.data)
-                    console.log('session',res.data.unSession)
                     if (res.data.unSession) {
                         const startTime = moment(res.data.startTime)
                         setStartCounter(startTime)
                     }
                     if (res.data.adminRole){
                         const adminRole = res.data.adminRole
-                        console.log(adminRole)
                         auth.adminStatusHandler(adminRole)
                     }
                     // setStartCounter(res.data)

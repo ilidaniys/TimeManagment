@@ -14,7 +14,6 @@ export const createAuthProvider = () => {
 
     const authFetch = async (input, init, type, data) => {
         const token = await tokenProvider.getToken()
-        console.log(token)
         init = init || {}
 
         init.headers = {

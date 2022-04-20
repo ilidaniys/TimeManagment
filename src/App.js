@@ -18,7 +18,7 @@ function App() {
     return (
         <CounterContext>
             <Hoc>
-                {auth?.auth
+                {auth.auth
                     ? <BrowserRouter>
                         <Header>
                         </Header>
@@ -33,15 +33,13 @@ function App() {
                                 <Route path={'/profile/:id'} element={
                                     <Profile/>
                                 }/>
-                                {auth?.adminStatus
+                                {auth.adminStatus
                                     ? <Route path={'/AdminPanel'} element={
                                         <AdminPanel/>
                                     }/>
-                                    : null
-                                }
+                                    : null}
 
                                 <Route path={'*'} element={<Home/>}/>
-
                             </Routes>
                         </Lauout>
                     </BrowserRouter>

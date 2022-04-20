@@ -12,13 +12,12 @@ export const useAuth = () => {
 const AuthContext = ({children}) => {
 
     const [auth, setAuth] = useState(false)
-    const [adminStatus, setAdminStatus] = useState()
+    const [adminStatus, setAdminStatus] = useState(false)
 
     useEffect(() => {
         const checkAuth = () => {
             let token = localStorage.getItem('TOKEN')
             if (!token) token = 0
-            console.log(token.length)
             if (token.length >= 17 && token) {
             setAuth(true)
             }
@@ -31,6 +30,7 @@ const AuthContext = ({children}) => {
         setAuth(status)
     }
     function adminStatusHandler(status){
+        console.log('hendler status', status)
         setAdminStatus(status)
     }
 

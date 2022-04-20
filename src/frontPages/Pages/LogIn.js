@@ -67,9 +67,13 @@ const LogIn = () => {
                 user, email, pwd
             })
             .then((res) => {
-                auth.authHandler(res.data.status)
-                auth.adminStatusHandler(res.data.adminStatus)
-                return res.data.accessToken
+                const err = res.data.errMassage
+                if (!err) {
+                    auth.authHandler(res.data.status)
+                    auth.adminStatusHandler(res.data.adminStatus)
+                    return res.data.accessToken
+                }
+                setErrMassage(err)
             })
             .then(token => login(token))
             .catch((e) => {
@@ -80,6 +84,9 @@ const LogIn = () => {
     return (
         <RegisterWrapper height={'25rem'}>
             <RegisterConteiner onSubmit={handleSubmit}>
+                {errMassage
+                    ? <p> incorrect email, or already used </p>
+                    : null}
                 <InputLogin
                     type={'text'}
                     autoComplete={'off'}

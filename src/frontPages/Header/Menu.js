@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuButton from "../component/MenuButton";
-import {NavLink,useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useAuth} from "../Context/authContext/AuthContext";
 import {logout} from "../Context/authContext/createAuthProvider";
@@ -30,7 +30,7 @@ const Menu = () => {
     const quite = () => {
         axios
             .get('http://localhost:5000/api/logout')
-            .then( (res) => {
+            .then((res) => {
                 navigate('/login')
                 logout()
                 auth.authHandler(res.data.auth)
@@ -51,7 +51,10 @@ const Menu = () => {
             </LeftButton>
             <RightButton>
                 <MenuButton>
-                    <NavLink to={'/adminPanel'}>Admin Panel </NavLink>
+                    {auth.adminStatus
+                        ? <NavLink to={'/adminPanel'}>Admin Panel </NavLink>
+                        : null
+                    }
                 </MenuButton>
                 <MenuButton>
                     <NavLink to={'/profile'}>Profile</NavLink>
