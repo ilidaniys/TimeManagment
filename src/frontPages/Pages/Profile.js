@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import {authFetch} from "../Context/authContext/createAuthProvider";
+import {useParams} from "react-router";
 
 
 const ProfileWrapper = styled.div`
@@ -73,11 +74,16 @@ const Profile = () => {
     const [email, setEmail] = useState('')
     const [spendTime, setSpendTime] = useState(0)
     const [sessions, setSessions] = useState('')
-
+    const { id } = useParams()
 
     useEffect(() => {
         const user = async () => {
-            await authFetch('http://localhost:5000/api/profile', {
+            let url = `http://localhost:5000/api/profile`
+            console.log('url', url)
+            if (id && id !== ''){
+                url += `/${id}`
+            }
+            await authFetch(url, {
                 method: 'GET',
             }, 'get')
                 .then(res => {
@@ -91,10 +97,8 @@ const Profile = () => {
                     console.log(e)
                 })
         }
-
         user()
-
-    }, [])
+    }, [id])
 
 
     const renderCards = () => {

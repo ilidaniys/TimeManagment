@@ -50,12 +50,12 @@ const Menu = () => {
                 </MenuButton>
             </LeftButton>
             <RightButton>
-                <MenuButton>
-                    {auth.adminStatus
-                        ? <NavLink to={'/adminPanel'}>Admin Panel </NavLink>
-                        : null
-                    }
-                </MenuButton>
+                {auth.adminStatus
+                    ? <MenuButton>
+                        <NavLink to={'/adminPanel'}>Admin Panel </NavLink>
+                    </MenuButton>
+                    : null
+                }
                 <MenuButton>
                     <NavLink to={'/profile'}>Profile</NavLink>
                 </MenuButton>

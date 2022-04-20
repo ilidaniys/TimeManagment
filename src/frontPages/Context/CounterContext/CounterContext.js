@@ -50,6 +50,7 @@ const CounterContext = ({children}) => {
                 .then(res => {
                     if (res.data.unSession) {
                         const startTime = moment(res.data.startTime)
+                        console.log(startTime)
                         setStartCounter(startTime)
                     }
                     if (res.data.adminRole){
