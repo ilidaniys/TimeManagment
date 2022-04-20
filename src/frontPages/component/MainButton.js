@@ -5,20 +5,20 @@ const ButtonWrapper = styled.button`
   box-sizing: border-box;
   padding: 2rem;
   margin: 1rem 2rem;
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 4rem;
+  font-weight: var(--font-weight-8);
   border-radius: 1rem;
   cursor: pointer !important; 
   height: 10rem;
-  
+  color: var(--gray-0);
+
   &.start {
-    border: .2rem solid #adeee3;
-    background: var(--start-button-color);
+
+    background: var(--green-4);
   }
 
   &.stop {
-    border: .2rem solid ;
-    background: var(--stop-button-color);
+    background: var(--red-8);
   }
   
   :hover{

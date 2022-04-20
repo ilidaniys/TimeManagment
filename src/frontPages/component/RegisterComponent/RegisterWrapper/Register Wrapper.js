@@ -5,7 +5,8 @@ export const RegisterWrapper = styled.div`
   width: 50%;
   margin-right: auto;
   margin-left: auto;
-  background: var(--registr-button-color);
+  background: var(--gray-2);
+  border-radius: .5rem;
   position: relative;
   //padding-top: 5rem;
   top: 5rem;
@@ -20,9 +21,16 @@ export const RegisterConteiner = styled.form`
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
+  
+  >p {
+    font-size: var(--font-weight-6);
+    color: var(--red-8);
+  }
 `
 export const SubmitBlock = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   width: 80%;
 `

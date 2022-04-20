@@ -79,7 +79,7 @@ const LogIn = () => {
     }
 
     return (
-        <RegisterWrapper height={'25rem'}>
+        <RegisterWrapper height={'30rem'}>
             <RegisterConteiner onSubmit={handleSubmit}>
                 <InputLogin
                     type={'text'}
@@ -116,7 +116,7 @@ const LogIn = () => {
                 </InputLogin>
                 <SubmitBlock>
                     <LinkSingup
-                        tittle={'Not yet registered??'}
+                        tittle={'Not yet registered?'}
                         text={'Register!'}
                         path={'/register'}
                     />

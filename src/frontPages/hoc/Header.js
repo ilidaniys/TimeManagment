@@ -9,7 +9,7 @@ const HeaderWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--header-color);
+  background: var(--gray-9);
 `
 const HeaderContentWrapper = styled.header`
   height: 100%;

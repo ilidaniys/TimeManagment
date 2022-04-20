@@ -1,6 +1,9 @@
+@import "open-props/style";
+@import "open-props/normalize";
 * {
     margin: 0;
     padding: 0;
+    font-family: var(--font-serif);
     /*text-decoration: none;*/
     /*color: inherit;*/
 }
@@ -14,7 +17,7 @@
 
     --start-button-color: #86deb7;
     --success-color: #329745;
-    --stop-button-color: #d81159;
+    --stop-button-color: var(--red-8);
     --stop-button-color-60: #da849f;
     --registr-button-color: #FFCF99;
 

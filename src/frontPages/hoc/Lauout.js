@@ -3,25 +3,23 @@ import styled from 'styled-components'
 
 const LauoutWrapper = styled.div`
   //z-index: 1;
-  width: 100vw;
+  height: auto;
   top: var(--header-height);
-  min-height: var(--main-height);
+  //min-height: var(--main-height);
   position: relative;
-  background: var(--main-color);
+  //background: var(--main-color);
 
 `
 const ContentWrapper = styled.div`
-  
+
   //background: aqua;
-  width: 80%;
-  height: inherit;
-  margin-left: auto;
-  margin-right: auto;
+  //width: 80%;
   display: flex;
+  justify-content: center;
   position: relative;
   overflow-x: hidden;
   //top: var(--header-height)
-  
+
 `
 
 

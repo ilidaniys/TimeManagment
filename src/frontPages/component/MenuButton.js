@@ -7,7 +7,7 @@ const Button = styled.button`
   border: none;
   background: none;
   font-size: 1.5rem;
-  color: var(--button-color);
+  color: var(--gray-0);
   
   > a {
     text-decoration: none;
@@ -16,12 +16,12 @@ const Button = styled.button`
 
   > a:hover {
     cursor: pointer;
-    color: var(--stop-button-color);
+    color: var(--red-8);
   }
   
   :hover{
     cursor: pointer;
-    color: var(--stop-button-color);
+    color: var(--red-8);
   }
 `
 

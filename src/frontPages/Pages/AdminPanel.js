@@ -7,13 +7,16 @@ import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 
 const AdminPanelWrapper = styled.div`
   width: 100%;
-
   padding: 1rem 0;
   margin: 1rem 0;
-  font-size: 2.2rem;
-  font-weight: 600;
 
+
+  >p{
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
   > div {
+    margin-left: 2rem;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -115,7 +118,7 @@ const AdminPanel = () => {
 
     return (
         <AdminPanelWrapper>
-            All users:
+            <p>All users:</p>
             <div>{renderUser()}</div>
         </AdminPanelWrapper>
     );

@@ -5,11 +5,12 @@ import {NavLink} from "react-router-dom";
 
 const LinkWrapper = styled.div`
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #463F3A;
-  font-weight: 600;
+  font-weight: var(--font-weight-7);
   > p {
-    
+    font-size: 1.3rem;
+    font-weight: 800;
   }
   > a {
     //text-decoration: none;
@@ -18,6 +19,7 @@ const LinkWrapper = styled.div`
   
   > a:hover{
     color: var(--stop-button-color-60);
+    text-decoration: none;
   }
 `
 

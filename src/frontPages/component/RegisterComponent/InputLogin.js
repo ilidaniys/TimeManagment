@@ -9,16 +9,16 @@ const InputWrapper = styled.div`
   margin-top: 1rem;
   width: 80%;
   height: 3rem;
-  border-radius: .125rem;
+  border-radius: var(--radius-round);
 
   .Input {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
     padding: 1rem;
-    border: .1rem solid var(--stop-button-color);
+    border: .1rem solid var(--red-8);
     outline: none;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     border-radius: .125rem;
 
@@ -61,7 +61,7 @@ const InputWrapper = styled.div`
   .instructions {
     display: block;
     font-size: .8rem;
-    color: #d81159;
+    color: var(--red-8);
 
     > .icon {
       margin: 0 .3rem 0 0;

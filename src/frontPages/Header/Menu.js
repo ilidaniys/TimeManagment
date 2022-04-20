@@ -11,13 +11,14 @@ const MenuWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 `
 
 const LeftButton = styled.div`
   display: flex;
 `
 const RightButton = styled.div`
+  gap: 2rem;
   display: flex;
 `
 
