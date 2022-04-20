@@ -3,7 +3,6 @@ import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
-
 import {authFetch} from "../Context/authContext/createAuthProvider";
 
 

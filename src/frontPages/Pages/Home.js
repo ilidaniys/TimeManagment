@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import MainButton from "../component/MainButton";
 import {useCounter} from "../Context/CounterContext/CounterContext";
 
-// const date = new Date(counter).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
-// const date2 = new Date(counter).getDate() - 1
-
 const HomeWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -22,10 +19,8 @@ const HomeConteiner = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 100%;
-  //max-height: 20rem;
-  //border: .1rem solid #B9BCD0;
   padding: 2rem;
-  
+
 
   > p {
     grid-row: 1;

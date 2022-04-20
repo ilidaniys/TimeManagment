@@ -12,18 +12,16 @@ export const useAuth = () => {
 const AuthContext = ({children}) => {
 
     const [auth, setAuth] = useState(false)
+    const [adminStatus, setAdminStatus] = useState()
 
     useEffect(() => {
         const checkAuth = () => {
-            const token = localStorage.getItem('TOKEN')
-            if (token) {
-                if (token.length >= 17) {
-                    setAuth(true)
-                }
-            } else {
-                setAuth(false)
+            let token = localStorage.getItem('TOKEN')
+            if (!token) token = 0
+            console.log(token.length)
+            if (token.length >= 17 && token) {
+            setAuth(true)
             }
-
         }
         checkAuth()
     }, [])
@@ -32,13 +30,17 @@ const AuthContext = ({children}) => {
     function authHandler(status) {
         setAuth(status)
     }
+    function adminStatusHandler(status){
+        setAdminStatus(status)
+    }
+
 
     
 
 
     return (
         <AuthProvider.Provider
-            value={{auth, authHandler}}
+            value={{auth, authHandler, adminStatus, adminStatusHandler}}
         >
             {children}
         </AuthProvider.Provider>

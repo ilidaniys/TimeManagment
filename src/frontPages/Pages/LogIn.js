@@ -8,13 +8,11 @@ import {
 import InputLogin from "../component/RegisterComponent/InputLogin";
 import {useAuth} from "../Context/authContext/AuthContext";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
 import {login} from "../Context/authContext/createAuthProvider";
 
 const LogIn = () => {
 
     const auth = useAuth()
-    const navigate = useNavigate()
 
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
@@ -70,6 +68,7 @@ const LogIn = () => {
             })
             .then((res) => {
                 auth.authHandler(res.data.status)
+                auth.adminStatusHandler(res.data.adminStatus)
                 return res.data.accessToken
             })
             .then(token => login(token))
