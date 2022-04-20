@@ -21,13 +21,6 @@ const AuthContext = ({children}) => {
             setAuth(true)
             }
         }
-        //     axios
-        //         .get('http://localhost:5000')
-        //         .then( res => {
-        //             setAuth(res)
-        //         })
-        //         .catch()
-        // }
         checkAuth()
     }, [])
 

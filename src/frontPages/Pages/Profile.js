@@ -103,13 +103,13 @@ const Profile = () => {
             console.log('sessions', sessions)
             // sessions.session.parse
             return sessions.session.map(({startTime, endTime}, index) => {
-                const startDate = new moment(startTime).format('MMMM Do YYYY, h:mm:ss a')
-                const endDate = new moment(endTime).format('MMMM Do YYYY, h:mm:ss a')
                 const startDateTime = new moment(startTime)
                 const endDateTime = new moment(endTime)
-                console.log(startDate)
+                const startDate = startDateTime.format('MMMM Do YYYY, h:mm:ss a')
+                const endDate = endDateTime.format('MMMM Do YYYY, h:mm:ss a')
+
                 const counter = endDateTime - startDateTime
-                console.log(counter)
+
                 const time = SecondToDate(counter)
 
                 return (

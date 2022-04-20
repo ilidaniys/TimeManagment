@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import UserCard from "../component/Session/UserCard";
+import {authFetch} from "../Context/authContext/createAuthProvider";
+import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 
 
 const AdminPanelWrapper = styled.div`
@@ -74,20 +76,40 @@ const userDate = [
 
 const AdminPanel = () => {
 
+    const [usersList, setUsersList] = useState('')
+
+    useEffect(() => {
+      const userList = async () => {
+         await authFetch('http://localhost:5000/api/adminList', {
+              method: 'GET'
+          }, 'get')
+              .then(res => {
+                  console.log(res.data)
+                  setUsersList(res.data)
+              })
+              .catch(e => console.log(e))
+      }
+        userList()
+    }, [])
+
     const renderUser = () => {
-        return userDate.map(({userName, userEmail, allTime, session, id}, index) => {
-            const quantitySession = session.length
-            return (
-                <UserCard
-                    key={index}
-                    id={id}
-                    userName={userName}
-                    userEmail={userEmail}
-                    time={allTime}
-                    session={quantitySession}
-                />
-            )
-        })
+        if (usersList){
+            return usersList.map(({name, email, allTime, sessions, _id}, index) => {
+                const quantitySession = sessions.session.length
+                const spendTime = SecondToDate(allTime)
+                return (
+                    <UserCard
+                        key={index}
+                        id={_id}
+                        userName={name}
+                        userEmail={email}
+                        time={spendTime}
+                        session={quantitySession}
+                    />
+                )
+            })
+        }
+        return null
     }
 
 

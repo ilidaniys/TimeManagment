@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
 import {authFetch} from "../authContext/createAuthProvider";
+import moment from "moment";
 
 
 const CounterProvider = createContext()
@@ -41,7 +42,24 @@ const CounterContext = ({children}) => {
 
 
     useEffect(() => {
+        const findStartDate = async () => {
+            await authFetch('http://localhost:5000/api/refreshStart', {
+                method: 'GET'
+            }, 'get')
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.startTime) {
+                        const startTime = moment(res.data.startTime)
+                        setStartCounter(startTime)
+                    }
+                    // setStartCounter(res.data)
+                })
+                .catch(e => console.log(e))
+        }
+        findStartDate()
+    }, [])
 
+    useEffect(() => {
         const interval = setInterval(() => {
             if (startCounter === '') {
                 clearInterval(interval)
@@ -49,7 +67,7 @@ const CounterContext = ({children}) => {
             }
             // const data = moment().format('MMMM Do YYYY, h:mm:ss')
             const data = new Date()
-            console.log(typeof data)
+            // console.log(typeof data)
             // console.log('second',second)
             const counter = data - startCounter
             const time = SecondToDate(counter)
