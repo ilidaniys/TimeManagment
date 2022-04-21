@@ -16,12 +16,12 @@ const SuccessWrapper = styled.div`
     padding: 1rem;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--success-color);
+    color: var(--gray-8);
   }
 
   > button {
     text-transform: capitalize;
-    width: 15rem;
+    width: auto;
     box-sizing: border-box;
     padding: 1rem 2rem;
     margin: 1rem 2rem;
@@ -29,9 +29,9 @@ const SuccessWrapper = styled.div`
     font-weight: 600;
     border-radius: 1rem;
     cursor: pointer !important;
-    color: #d81159;
-    border: .2rem solid #adeee3;
-    background: var(--start-button-color);
+    color: var(--gray-8);
+    //border: .2rem solid #adeee3;
+    background: var(--green-5);
     
     > a{
       text-decoration: none;
