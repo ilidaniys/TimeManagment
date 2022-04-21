@@ -49,17 +49,13 @@ const CounterContext = ({children}) => {
             }, 'get')
                 .then(res => {
                     if (res.data.unSession) {
-                        console.log('resdata',res.data)
-                        // console.log(res.data.startTime)
                         const startTime = moment(res.data.unSession.startTime)
-                        console.log('startTime', startTime)
                         setStartCounter(startTime)
                     }
-                    if (res.data.adminRole){
+                    if (res.data.adminRole) {
                         const adminRole = res.data.adminRole
                         auth.adminStatusHandler(adminRole)
                     }
-                    // setStartCounter(res.data)
                 })
                 .catch(e => console.log(e))
         }
@@ -67,26 +63,41 @@ const CounterContext = ({children}) => {
     }, [])
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (startCounter === '') {
-                clearInterval(interval)
-                return
-            }
-            // const data = moment().format('MMMM Do YYYY, h:mm:ss')
-            // console.log(startCounter)
-            const data = new Date()
-            // console.log(data)
-            const counter = data - startCounter
-            console.log(counter)
-            const time = SecondToDate(counter)
-            // console.log(time)
-            // console.log(counter)
-            setCurrentCounter(time)
-        }, 1000)
+        if (startCounter === '') {
+            setCurrentCounter(SecondToDate(0))
+            return
+        }
 
-        return () => clearInterval(interval)
+        const data = new Date()
+        const counter = data - startCounter
+        console.log(counter)
+        const time = SecondToDate(counter)
+        setCurrentCounter(time)
     }, [setCurrentCounter, startCounter])
 
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (auth.auth) {
+                authFetch('http://localhost:5000/api/refreshStart', {
+                    method: 'GET'
+                }, 'get')
+                    .then(res => {
+                        if (res.data.unSession) {
+                            const startTime = moment(res.data.unSession.startTime)
+                            setStartCounter(startTime)
+                        } else {
+                            if (startCounter !== "") setStartCounter("")
+                        }
+
+                    })
+                    .catch(e => console.log(e))
+            } else {
+                return () => clearInterval(interval)
+            }
+        }, 1001)
+        return () => clearInterval(interval)
+    }, [auth.auth, startCounter])
 
     return (
         <CounterProvider.Provider value={{

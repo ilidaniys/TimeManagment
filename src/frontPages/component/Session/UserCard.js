@@ -5,7 +5,7 @@ import {authFetch} from "../../Context/authContext/createAuthProvider";
 
 const UserCardWrapper = styled.div`
   box-sizing: border-box;
-  width: 35rem;
+  width: 45rem;
   height: auto;
   padding: 1rem;
   background: #eeede5;

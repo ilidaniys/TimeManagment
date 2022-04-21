@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components'
 
 const LauoutWrapper = styled.div`
-  //z-index: 1;
-  height: auto;
+
+  height: var(--main-height);
   top: var(--header-height);
-  //min-height: var(--main-height);
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
   position: relative;
-  //background: var(--main-color);
 
 `
 const ContentWrapper = styled.div`

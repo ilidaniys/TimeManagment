@@ -9,6 +9,7 @@ import InputLogin from "../component/RegisterComponent/InputLogin";
 import {useAuth} from "../Context/authContext/AuthContext";
 import axios from "axios";
 import {login} from "../Context/authContext/createAuthProvider";
+import RegisterHoc from "../hoc/RegisterHoc";
 
 const LogIn = () => {
 
@@ -82,59 +83,61 @@ const LogIn = () => {
     }
 
     return (
-        <RegisterWrapper height={'30rem'}>
-            <RegisterConteiner onSubmit={handleSubmit}>
-                {errMassage
-                    ? <p> incorrect email, or already used </p>
-                    : null}
-                <InputLogin
-                    type={'text'}
-                    autoComplete={'off'}
-                    required={'true'}
-                    setState={setUser}
-                    onFocus={() => setUserFocus(true)}
-                    focus={userFocus}
-                    state={user}
-                >
-                    User Name
-                </InputLogin>
-                <InputLogin
-                    type={'text'}
-                    autoComplete={'off'}
-                    required={'true'}
-                    setState={setEmail}
-                    onFocus={() => setEmailFocus(true)}
-                    focus={emailFocus}
-                    state={email}
-                >
-                    Email
-                </InputLogin>
-                <InputLogin
-                    type={'password'}
-                    autoComplete={'off'}
-                    required={'true'}
-                    setState={setPwd}
-                    onFocus={() => setPwdFocus(true)}
-                    focus={pwdFocus}
-                    state={pwd}
-                >
-                    Password
-                </InputLogin>
-                <SubmitBlock>
-                    <LinkSingup
-                        tittle={'Not yet registered?'}
-                        text={'Register!'}
-                        path={'/register'}
-                    />
-                    <SubmitRegister
-                        validName={validName}
-                        validEmail={validEmail}
-                        validPwd={validPwd}
-                        validMatch={'true'}
-                    />
-                </SubmitBlock>
-            </RegisterConteiner>
-        </RegisterWrapper>
+        <RegisterHoc>
+            <RegisterWrapper height={'30rem'}>
+                <RegisterConteiner onSubmit={handleSubmit}>
+                    {errMassage
+                        ? <p> incorrect email, or already used </p>
+                        : null}
+                    <InputLogin
+                        type={'text'}
+                        autoComplete={'off'}
+                        required={'true'}
+                        setState={setUser}
+                        onFocus={() => setUserFocus(true)}
+                        focus={userFocus}
+                        state={user}
+                    >
+                        User Name
+                    </InputLogin>
+                    <InputLogin
+                        type={'text'}
+                        autoComplete={'off'}
+                        required={'true'}
+                        setState={setEmail}
+                        onFocus={() => setEmailFocus(true)}
+                        focus={emailFocus}
+                        state={email}
+                    >
+                        Email
+                    </InputLogin>
+                    <InputLogin
+                        type={'password'}
+                        autoComplete={'off'}
+                        required={'true'}
+                        setState={setPwd}
+                        onFocus={() => setPwdFocus(true)}
+                        focus={pwdFocus}
+                        state={pwd}
+                    >
+                        Password
+                    </InputLogin>
+                    <SubmitBlock>
+                        <LinkSingup
+                            tittle={'Not yet registered?'}
+                            text={'Register!'}
+                            path={'/register'}
+                        />
+                        <SubmitRegister
+                            validName={validName}
+                            validEmail={validEmail}
+                            validPwd={validPwd}
+                            validMatch={'true'}
+                        />
+                    </SubmitBlock>
+                </RegisterConteiner>
+            </RegisterWrapper>
+        </RegisterHoc>
     );
 };
 

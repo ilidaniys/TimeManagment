@@ -10,6 +10,7 @@ import CounterContext from "./frontPages/Context/CounterContext/CounterContext";
 import {useAuth} from "./frontPages/Context/authContext/AuthContext";
 import AdminPanel from "./frontPages/Pages/AdminPanel";
 import Hoc from "./frontPages/hoc/Hoc";
+import RegisterHoc from "./frontPages/hoc/RegisterHoc";
 
 
 function App() {
@@ -44,17 +45,17 @@ function App() {
                         </Lauout>
                     </BrowserRouter>
                     : <BrowserRouter>
-                        <Routes>
-                            <Route path={'*'} element={
-                                <LogIn/>
-                            }/>
-                            <Route path={'/login'} element={
-                                <LogIn/>
-                            }/>
-                            <Route path={'/register'} element={
-                                <Register/>
-                            }/>
-                        </Routes>
+                            <Routes>
+                                <Route path={'*'} element={
+                                    <LogIn/>
+                                }/>
+                                <Route path={'/login'} element={
+                                    <LogIn/>
+                                }/>
+                                <Route path={'/register'} element={
+                                    <Register/>
+                                }/>
+                            </Routes>
                     </BrowserRouter>
 
                 }

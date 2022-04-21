@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
+
+
+
+
 export const RegisterWrapper = styled.div`
   height: ${props => props.height || '10rem'};
   width: 50%;
-  margin-right: auto;
-  margin-left: auto;
-  background: var(--gray-2);
+  //margin-right: auto;
+  //margin-left: auto;
+  background: var(--surface-3);
   border-radius: .5rem;
   position: relative;
   //padding-top: 5rem;
-  top: 5rem;
+  //top: 5rem;
 `
 export const RegisterConteiner = styled.form`
   position: inherit;
@@ -21,8 +25,8 @@ export const RegisterConteiner = styled.form`
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  
-  >p {
+
+  > p {
     font-size: var(--font-weight-6);
     color: var(--red-8);
   }

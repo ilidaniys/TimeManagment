@@ -1,7 +1,5 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import styled from 'styled-components'
-import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const InputWrapper = styled.div`
   position: relative;
@@ -21,6 +19,7 @@ const InputWrapper = styled.div`
     font-size: 1.3rem;
     font-weight: 600;
     border-radius: .125rem;
+    //cursor: text;
 
     ::placeholder {
       color: var(--stop-button-color-60);
