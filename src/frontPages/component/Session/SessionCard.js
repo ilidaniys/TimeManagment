@@ -7,7 +7,8 @@ const SessionCardWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  width: 40rem;
+  max-width: 50rem;
+  width: auto;
   height: auto;
   padding: 1rem;
   gap: .5rem;
@@ -15,13 +16,14 @@ const SessionCardWrapper = styled.div`
   border-radius: .24rem;
   margin-left: auto;
   margin-right: auto;
+  align-items: center;
+  justify-items: start;
   > h1 {
     box-sizing: border-box;
     font-size: 1.5rem;
   }
 
   > p {
-    margin-top: auto;
     color: var(--gray-8);
     font-size: 1.5rem;
   }

@@ -9,6 +9,7 @@ const InputWrapper = styled.div`
   height: 3rem;
   border-radius: var(--radius-round);
 
+
   .Input {
     box-sizing: border-box;
     width: 100%;
@@ -19,7 +20,7 @@ const InputWrapper = styled.div`
     font-size: 1.3rem;
     font-weight: 600;
     border-radius: .125rem;
-    //cursor: text;
+    cursor: text;
 
     ::placeholder {
       color: var(--stop-button-color-60);

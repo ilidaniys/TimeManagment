@@ -67,7 +67,6 @@ const CounterContext = ({children}) => {
             setCurrentCounter(SecondToDate(0))
             return
         }
-
         const data = new Date()
         const counter = data - startCounter
         console.log(counter)

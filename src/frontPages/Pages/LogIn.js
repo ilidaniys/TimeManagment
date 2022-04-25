@@ -17,7 +17,7 @@ const LogIn = () => {
 
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
-    const [userFocus, setUserFocus] = useState(false)
+    // const [userFocus, setUserFocus] = useState(false)
 
     const [email, setEmail] = useState('')
     const [validEmail, setValidEmail] = useState(false)
@@ -59,13 +59,13 @@ const LogIn = () => {
 
     useEffect(() => {
         setErrMassage('')
-    }, [user, email, pwd])
+    }, [ email, pwd])
 
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
             .post('http://localhost:5000/api/login', {
-                user, email, pwd
+                email, pwd
             })
             .then((res) => {
                 const err = res.data.errMassage
@@ -84,22 +84,22 @@ const LogIn = () => {
 
     return (
         <RegisterHoc>
-            <RegisterWrapper height={'30rem'}>
+            <RegisterWrapper height={'25rem'}>
                 <RegisterConteiner onSubmit={handleSubmit}>
                     {errMassage
                         ? <p> incorrect email, or already used </p>
                         : null}
-                    <InputLogin
-                        type={'text'}
-                        autoComplete={'off'}
-                        required={'true'}
-                        setState={setUser}
-                        onFocus={() => setUserFocus(true)}
-                        focus={userFocus}
-                        state={user}
-                    >
-                        User Name
-                    </InputLogin>
+                    {/*<InputLogin*/}
+                    {/*    type={'text'}*/}
+                    {/*    autoComplete={'off'}*/}
+                    {/*    required={'true'}*/}
+                    {/*    setState={setUser}*/}
+                    {/*    onFocus={() => setUserFocus(true)}*/}
+                    {/*    focus={userFocus}*/}
+                    {/*    state={user}*/}
+                    {/*>*/}
+                    {/*    User Name*/}
+                    {/*</InputLogin>*/}
                     <InputLogin
                         type={'text'}
                         autoComplete={'off'}
@@ -129,7 +129,7 @@ const LogIn = () => {
                             path={'/register'}
                         />
                         <SubmitRegister
-                            validName={validName}
+                            validName={true}
                             validEmail={validEmail}
                             validPwd={validPwd}
                             validMatch={'true'}

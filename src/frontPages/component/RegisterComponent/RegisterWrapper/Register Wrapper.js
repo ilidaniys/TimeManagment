@@ -27,7 +27,8 @@ export const RegisterConteiner = styled.form`
   gap: 2rem;
 
   > p {
-    font-size: var(--font-weight-6);
+    font-size: 1.3rem;
+    font-weight: 600;
     color: var(--red-8);
   }
 `
@@ -37,4 +38,5 @@ export const SubmitBlock = styled.div`
   align-items: center;
   gap: 1rem;
   width: 80%;
+  //cursor: text;
 `

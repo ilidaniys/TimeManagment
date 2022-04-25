@@ -24,7 +24,7 @@ const AuthContext = ({children}) => {
             }
         }
         checkAuth()
-    }, [])
+    }, [auth])
 
 
     function authHandler(status) {
