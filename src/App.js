@@ -11,6 +11,7 @@ import {useAuth} from "./frontPages/Context/authContext/AuthContext";
 import AdminPanel from "./frontPages/Pages/AdminPanel";
 import Hoc from "./frontPages/hoc/Hoc";
 import RegisterHoc from "./frontPages/hoc/RegisterHoc";
+import ProfileContext from "./frontPages/Context/ProfileContext/ProfileContext";
 
 
 function App() {
@@ -18,33 +19,34 @@ function App() {
 
     return (
         <CounterContext>
-            <Hoc>
-                {auth.auth
-                    ? <BrowserRouter>
-                        <Header>
-                        </Header>
-                        <Lauout>
-                            <Routes>
-                                <Route path='/' exact element={
-                                    <Home/>
-                                }/>
-                                <Route path='/profile' element={
-                                    <Profile/>
-                                }/>
-                                <Route path={'/profile/:id'} element={
-                                    <Profile/>
-                                }/>
-                                {auth.adminStatus
-                                    ? <Route path={'/AdminPanel'} element={
-                                        <AdminPanel/>
+            <ProfileContext>
+                <Hoc>
+                    {auth.auth
+                        ? <BrowserRouter>
+                            <Header>
+                            </Header>
+                            <Lauout>
+                                <Routes>
+                                    <Route path='/' exact element={
+                                        <Home/>
                                     }/>
-                                    : null}
+                                    <Route path='/profile' element={
+                                        <Profile/>
+                                    }/>
+                                    <Route path={'/profile/:id'} element={
+                                        <Profile/>
+                                    }/>
+                                    {auth.adminStatus
+                                        ? <Route path={'/AdminPanel'} element={
+                                            <AdminPanel/>
+                                        }/>
+                                        : null}
 
-                                <Route path={'*'} element={<Home/>}/>
-                            </Routes>
-                        </Lauout>
-                    </BrowserRouter>
-                    : <BrowserRouter>
+                                    <Route path={'*'} element={<Home/>}/>
+                                </Routes>
+                            </Lauout>
+                        </BrowserRouter>
+                        : <BrowserRouter>
                             <Routes>
                                 <Route path={'*'} element={
                                     <LogIn/>
@@ -56,10 +58,11 @@ function App() {
                                     <Register/>
                                 }/>
                             </Routes>
-                    </BrowserRouter>
+                        </BrowserRouter>
 
-                }
-            </Hoc>
+                    }
+                </Hoc>
+            </ProfileContext>
         </CounterContext>
     );
 }

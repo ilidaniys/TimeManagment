@@ -3,9 +3,8 @@ import styled from "styled-components";
 import SessionCard from "../component/Session/SessionCard";
 import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
-import {authFetch} from "../Context/authContext/createAuthProvider";
+import {useProfile} from "../Context/ProfileContext/ProfileContext";
 import {useParams} from "react-router-dom";
-import {Bar} from 'react-chartjs-2'
 
 
 const ProfileWrapper = styled.div`
@@ -69,40 +68,23 @@ const ProfileGraph = styled.div`
 
 const Profile = () => {
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [spendTime, setSpendTime] = useState(0)
-    const [sessions, setSessions] = useState('')
+    const ProfileContext = useProfile()
     const {id} = useParams()
 
     useEffect(() => {
-        const user = async () => {
-            let url = `http://localhost:5000/api/profile`
-            if (id && id !== '') {
-                url += `/${id}`
-                console.log('url+id', url)
-            }
-            await authFetch(url, {
-                method: 'GET',
-            }, 'get')
-                .then(res => {
-                    // console.log('profile data', res.data)
-                    setName(res.data.name)
-                    setEmail(res.data.email)
-                    setSpendTime(SecondToDate(res.data.allTime))
-                    setSessions(res.data.sessions)
-                })
-                .catch((e) => {
-                    console.log(e)
-                })
+        console.log('id', id)
+        let url = `http://localhost:5000/api/profile`
+        if (id && id !== '') {
+            url += `/${id}`
+            console.log('url+id', url)
         }
-        user()
-    }, [id])
+        ProfileContext.user(url)
+    }, [ProfileContext.id])
 
 
     const renderCards = () => {
-        if (sessions) {
-            return sessions.session.map(({startTime, endTime}, index) => {
+        if (ProfileContext.sessions) {
+            return ProfileContext.sessions.session.map(({startTime, endTime}, index) => {
                 const startDateTime = new moment(startTime)
                 const startDate = startDateTime.format('MMMM Do YYYY, h:mm:ss a')
                 if (endTime !== "0") {
@@ -132,34 +114,7 @@ const Profile = () => {
         }
         return null
     }
-    const renderGraph = () => {
-        if (sessions){
-            const options = {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top'
-                    },
-                    title: {
-                        display: true,
-                        text: 'attendance schedule'
-                    }
-                }
-            }
-            const leble = {}
-            const data = {
-                labels:
-                datasets: [
-                    {
-                        label: 'Session',
-                        data:
-                    }
-                ]
-            }
-            return (<Bar options={} data={}/>)
-        }
-        return null
-    }
+
 
     return (
         <ProfileWrapper>
@@ -168,15 +123,15 @@ const Profile = () => {
                     Contact info
                     <div>
                         <p>Name:</p>
-                        <p>{name}</p>
+                        <p>{ProfileContext.name}</p>
                         <p>Email: </p>
-                        <p>{email}</p>
+                        <p>{ProfileContext.email}</p>
                         <p>All your spend time for work:</p>
-                        <p>{spendTime}</p>
+                        <p>{ProfileContext.spendTime}</p>
                     </div>
                 </ProfileContactInfo>
                 <ProfileGraph>
-                    {renderGraph()}
+                    {/*{renderGraph()}*/}
                 </ProfileGraph>
             </ProfileInfo>
             Your session:
