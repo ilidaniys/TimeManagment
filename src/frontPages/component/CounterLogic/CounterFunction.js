@@ -17,3 +17,11 @@ export function SecondToDate (date) {
 
     return (`${hours}:${minutes}:${seconds}`).toString()
 }
+
+export function secondToHour (date) {
+    console.log(date)
+    let sec_num = parseInt(date, 10)
+    console.log('math', Math.floor(sec_num / 60000))
+    return Math.floor(sec_num / 60000)
+
+}

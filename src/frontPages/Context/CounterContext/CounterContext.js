@@ -48,17 +48,21 @@ const CounterContext = ({children}) => {
                 method: 'GET'
             }, 'get')
                 .then(res => {
-                    console.log('refresh Start 1')
-                    console.log(res.data.unSession)
-                    if (res.data.unSession) {
-                        const startTime = moment(res.data.unSession.startTime)
-                        setStartCounter(startTime)
+                    if (res.data.unRegister !== false){
+                        console.log('refresh Start 1')
+                        if (res.data.unSession) {
+                            const startTime = moment(res.data.unSession.startTime)
+                            setStartCounter(startTime)
+                        }
+                        if (res.data.adminRole) {
+                            console.log('admin Role', res.data.adminRole)
+                            const adminRole = res.data.adminRole
+                            auth.adminStatusHandler(adminRole)
+                        }
+                    } else {
+                        auth.authHandler(res.data.unRegister)
                     }
-                    if (res.data.adminRole) {
-                        console.log('admin Role', res.data.adminRole)
-                        const adminRole = res.data.adminRole
-                        auth.adminStatusHandler(adminRole)
-                    }
+
                 })
                 .catch(e => console.log(e))
         }
@@ -94,7 +98,6 @@ const CounterContext = ({children}) => {
                             // console.log('!res.data.unSession')
                             if (startCounter !== "") setStartCounter("")
                         }
-
                     })
                     .catch(e => console.log(e))
             } else {

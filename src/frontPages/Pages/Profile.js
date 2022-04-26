@@ -36,7 +36,7 @@ const ProfileInfo = styled.div`
 `
 
 const ProfileContactInfo = styled.div`
-  width: 40%;
+  width: 50%;
   position: relative;
   display: flex;
   gap: 1rem;
@@ -60,7 +60,7 @@ const ProfileContactInfo = styled.div`
 `
 const ProfileGraph = styled.div`
   box-sizing: border-box;
-  width: 60%;
+  width: 50%;
   position: relative;
   //max-height: 30rem;
   //height: 40rem;
@@ -81,7 +81,7 @@ const Profile = () => {
             console.log('url+id', url)
         }
         profileContext.user(url)
-    }, [id])
+    }, [id, profileContext])
 
     return (
         <ProfileWrapper>

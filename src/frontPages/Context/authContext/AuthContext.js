@@ -32,7 +32,7 @@ const AuthContext = ({children}) => {
     }
 
     function adminStatusHandler(status) {
-        console.log('hendler status', status)
+        // console.log('hendler status', status)
         setAdminStatus(status)
     }
 

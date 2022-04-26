@@ -5,6 +5,7 @@ import React from "react";
 import {useProfile} from "../../Context/ProfileContext/ProfileContext";
 import moment from "moment";
 import styled from "styled-components";
+import {secondToHour} from "../CounterLogic/CounterFunction";
 
 
 const BarWrapper = styled.div`
@@ -33,11 +34,15 @@ export const RenderGraph = () => {
             }
             return null
         })
-        console.log('map', map)
+
         return map
     }
     if (profileContext.sessions) {
         const dateMap = dataCounter()
+        const value = Object.values(dateMap)
+        console.log('value', value)
+        const time =  value.map(value => secondToHour(value))
+        console.log('time',time)
         const options = {
             scales: {
                 x: {
@@ -97,8 +102,8 @@ export const RenderGraph = () => {
             labels: labels,
             datasets: [
                 {
-                    label: 'Sessions',
-                    data: Object.values(dateMap),
+                    label: 'duration of sessions per day',
+                    data: time,
                     fill: false,
                     backgroundColor: [`red`]
                 }
