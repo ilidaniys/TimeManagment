@@ -32,7 +32,7 @@ const ProfileInfo = styled.div`
   width: 100%;
   gap: 2rem;
   position: relative;
-  
+
 `
 
 const ProfileContactInfo = styled.div`
@@ -60,13 +60,11 @@ const ProfileContactInfo = styled.div`
 `
 const ProfileGraph = styled.div`
   box-sizing: border-box;
-  border: .1rem solid var(--red-8);
   width: 60%;
   position: relative;
-  //height: auto;
+  //max-height: 30rem;
+  //height: 40rem;
 `
-
-
 
 
 const Profile = () => {
