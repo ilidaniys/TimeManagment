@@ -2,6 +2,8 @@ import React, {createContext, useContext, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {authFetch} from "../authContext/createAuthProvider";
 import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
+import moment from "moment";
+import SessionCard from "../../component/Session/SessionCard";
 
 
 const ProfileProvider = createContext()
@@ -28,11 +30,45 @@ const ProfileContext = ({children}) => {
                 setName(res.data.name)
                 setEmail(res.data.email)
                 setSpendTime(SecondToDate(res.data.allTime))
+                // console.log('res data sessions',res.data.sessions)
                 setSessions(res.data.sessions)
             })
             .catch((e) => {
                 console.log(e)
             })
+    }
+    const renderCards = () => {
+        // console.log('sessions', sessions)
+        if (sessions) {
+            return sessions.session.map(({startTime, endTime}, index) => {
+                const startDateTime = new moment(startTime)
+                const startDate = startDateTime.format('MMMM Do YYYY, h:mm:ss a')
+                if (endTime !== "0") {
+                    const endDateTime = new moment(endTime)
+                    const endDate = endDateTime.format('MMMM Do YYYY, h:mm:ss a')
+                    const counter = endDateTime - startDateTime
+                    const time = SecondToDate(counter)
+                    return (
+                        <SessionCard
+                            key={index}
+                            startDate={startDate}
+                            endDate={endDate}
+                            time={time}
+                        />)
+                } else {
+                    const endDate = 'Not finished yet'
+                    const time = 'End session pls...'
+                    return (
+                        <SessionCard
+                            key={index}
+                            startDate={startDate}
+                            endDate={endDate}
+                            time={time}
+                        />)
+                }
+            })
+        }
+        return null
     }
 
     return (
@@ -41,7 +77,8 @@ const ProfileContext = ({children}) => {
             email,
             spendTime,
             sessions,
-            user
+            user,
+            renderCards
         }}>
             {children}
         </ProfileProvider.Provider>

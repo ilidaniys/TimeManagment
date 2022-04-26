@@ -5,6 +5,7 @@ import moment from "moment";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import {useProfile} from "../Context/ProfileContext/ProfileContext";
 import {useParams} from "react-router-dom";
+import {RenderGraph} from "../component/GraphLogic/Graph";
 
 
 const ProfileWrapper = styled.div`
@@ -31,11 +32,15 @@ const ProfileWrapper = styled.div`
 const ProfileInfo = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+  position: relative;
   
 `
 
 const ProfileContactInfo = styled.div`
-
+  width: 40%;
+  position: relative;
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -59,7 +64,8 @@ const ProfileContactInfo = styled.div`
 const ProfileGraph = styled.div`
   box-sizing: border-box;
   border: .1rem solid var(--red-8);
-  //width: 50%;
+  width: 60%;
+  position: relative;
   height: auto;
 `
 
@@ -68,53 +74,19 @@ const ProfileGraph = styled.div`
 
 const Profile = () => {
 
-    const ProfileContext = useProfile()
+    const profileContext = useProfile()
     const {id} = useParams()
 
     useEffect(() => {
+        console.log('session list', profileContext.sessions)
         console.log('id', id)
         let url = `http://localhost:5000/api/profile`
         if (id && id !== '') {
             url += `/${id}`
             console.log('url+id', url)
         }
-        ProfileContext.user(url)
-    }, [ProfileContext.id])
-
-
-    const renderCards = () => {
-        if (ProfileContext.sessions) {
-            return ProfileContext.sessions.session.map(({startTime, endTime}, index) => {
-                const startDateTime = new moment(startTime)
-                const startDate = startDateTime.format('MMMM Do YYYY, h:mm:ss a')
-                if (endTime !== "0") {
-                    const endDateTime = new moment(endTime)
-                    const endDate = endDateTime.format('MMMM Do YYYY, h:mm:ss a')
-                    const counter = endDateTime - startDateTime
-                    const time = SecondToDate(counter)
-                    return (
-                        <SessionCard
-                            key={index}
-                            startDate={startDate}
-                            endDate={endDate}
-                            time={time}
-                        />)
-                } else {
-                    const endDate = 'Not finished yet'
-                    const time = 'End session pls...'
-                    return (
-                        <SessionCard
-                            key={index}
-                            startDate={startDate}
-                            endDate={endDate}
-                            time={time}
-                        />)
-                }
-            })
-        }
-        return null
-    }
-
+        profileContext.user(url)
+    }, [profileContext.id])
 
     return (
         <ProfileWrapper>
@@ -123,20 +95,20 @@ const Profile = () => {
                     Contact info
                     <div>
                         <p>Name:</p>
-                        <p>{ProfileContext.name}</p>
+                        <p>{profileContext.name}</p>
                         <p>Email: </p>
-                        <p>{ProfileContext.email}</p>
+                        <p>{profileContext.email}</p>
                         <p>All your spend time for work:</p>
-                        <p>{ProfileContext.spendTime}</p>
+                        <p>{profileContext.spendTime}</p>
                     </div>
                 </ProfileContactInfo>
                 <ProfileGraph>
-                    {/*{renderGraph()}*/}
+                    <RenderGraph/>
                 </ProfileGraph>
             </ProfileInfo>
             Your session:
             <div className={'wrapperCard'}>
-                {renderCards()}
+                {profileContext.renderCards()}
             </div>
         </ProfileWrapper>
     );

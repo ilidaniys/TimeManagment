@@ -10,10 +10,12 @@ import {useAuth} from "../Context/authContext/AuthContext";
 import axios from "axios";
 import {login} from "../Context/authContext/createAuthProvider";
 import RegisterHoc from "../hoc/RegisterHoc";
+import {useNavigate} from "react-router-dom";
 
 const LogIn = () => {
 
     const auth = useAuth()
+    let navigate = useNavigate()
 
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
@@ -76,7 +78,10 @@ const LogIn = () => {
                 }
                 setErrMassage(err)
             })
-            .then(token => login(token))
+            .then(token => {
+                login(token)
+                navigate(`/`)
+            })
             .catch((e) => {
                 console.log(e)
             })
