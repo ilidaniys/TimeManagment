@@ -25,7 +25,6 @@ const ProfileWrapper = styled.div`
   }
 
 `
-
 const ProfileInfo = styled.div`
   display: flex;
   justify-content: space-between;
@@ -34,7 +33,6 @@ const ProfileInfo = styled.div`
   position: relative;
 
 `
-
 const ProfileContactInfo = styled.div`
   width: 50%;
   position: relative;
@@ -62,10 +60,7 @@ const ProfileGraph = styled.div`
   box-sizing: border-box;
   width: 50%;
   position: relative;
-  //max-height: 30rem;
-  //height: 40rem;
 `
-
 
 const Profile = () => {
 
@@ -81,7 +76,7 @@ const Profile = () => {
             console.log('url+id', url)
         }
         profileContext.user(url)
-    }, [id, profileContext])
+    }, [id])
 
     return (
         <ProfileWrapper>

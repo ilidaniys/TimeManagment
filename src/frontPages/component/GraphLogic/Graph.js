@@ -54,7 +54,6 @@ export const RenderGraph = () => {
                         },
                     },
                     grid: { display: false }
-
                 },
                 y: {
                     ticks: {
@@ -105,7 +104,7 @@ export const RenderGraph = () => {
                     label: 'duration of sessions per day',
                     data: time,
                     fill: false,
-                    backgroundColor: [`red`]
+                    backgroundColor: [`rgb(255, 255, 255)`]
                 }
             ]
         }
