@@ -61,10 +61,6 @@ export const RenderGraph = () => {
                 text: {
                     color: 'white',
                 },
-                outlabels: {
-                    backgroundColor: "white",
-                    color: "black",
-                },
                 labels: {
                     color: 'white'
                 },
