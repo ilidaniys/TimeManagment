@@ -15,19 +15,14 @@ export const RenderGraph = () => {
 
     const profileContext = useProfile()
     const dataCounter = () => {
-        console.log('start dataCounter')
         const ses = profileContext.sessions.session
         const map = {}
         ses.forEach(session => {
             const date = moment(session.startTime).format("MMM Do")
-            console.log()
             const startDateTime = new moment(session.startTime)
             // if (ses.endTime !== "0"){
             const endDateTime = new moment(session.endTime)
-            console.log(endDateTime)
-            console.log(startDateTime)
             const counter = endDateTime - startDateTime
-            console.log('counter', counter)
             if (map[date] === undefined) {
                 return map[date] = counter
             }
@@ -71,8 +66,6 @@ export const RenderGraph = () => {
 
         }
         const labels = Object.keys(dateMap)
-        console.log('Object.values(dateMap)', Object.values(dateMap))
-        console.log(' Object.keys(dateMap)', labels)
         const data = {
             labels: labels,
             datasets: [

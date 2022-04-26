@@ -1,5 +1,4 @@
 import React, {createContext, useContext, useState} from 'react';
-import {useParams} from "react-router-dom";
 import {authFetch} from "../authContext/createAuthProvider";
 import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
 import moment from "moment";
@@ -21,7 +20,6 @@ const ProfileContext = ({children}) => {
 
 
     const user = async (url) => {
-
         await authFetch(url, {
             method: 'GET',
         }, 'get')
@@ -30,7 +28,6 @@ const ProfileContext = ({children}) => {
                 setName(res.data.name)
                 setEmail(res.data.email)
                 setSpendTime(SecondToDate(res.data.allTime))
-                // console.log('res data sessions',res.data.sessions)
                 setSessions(res.data.sessions)
             })
             .catch((e) => {

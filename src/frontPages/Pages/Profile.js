@@ -1,8 +1,5 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
-import SessionCard from "../component/Session/SessionCard";
-import moment from "moment";
-import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import {useProfile} from "../Context/ProfileContext/ProfileContext";
 import {useParams} from "react-router-dom";
 import {RenderGraph} from "../component/GraphLogic/Graph";
@@ -66,7 +63,7 @@ const ProfileGraph = styled.div`
   border: .1rem solid var(--red-8);
   width: 60%;
   position: relative;
-  height: auto;
+  //height: auto;
 `
 
 
@@ -78,7 +75,7 @@ const Profile = () => {
     const {id} = useParams()
 
     useEffect(() => {
-        console.log('session list', profileContext.sessions)
+        console.log('session list', profileContext.sessions.session)
         console.log('id', id)
         let url = `http://localhost:5000/api/profile`
         if (id && id !== '') {
@@ -86,7 +83,7 @@ const Profile = () => {
             console.log('url+id', url)
         }
         profileContext.user(url)
-    }, [profileContext.id])
+    }, [id])
 
     return (
         <ProfileWrapper>

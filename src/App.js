@@ -10,7 +10,6 @@ import CounterContext from "./frontPages/Context/CounterContext/CounterContext";
 import {useAuth} from "./frontPages/Context/authContext/AuthContext";
 import AdminPanel from "./frontPages/Pages/AdminPanel";
 import Hoc from "./frontPages/hoc/Hoc";
-import RegisterHoc from "./frontPages/hoc/RegisterHoc";
 import ProfileContext from "./frontPages/Context/ProfileContext/ProfileContext";
 
 
@@ -33,7 +32,7 @@ function App() {
                                     <Route path='/profile' element={
                                         <Profile/>
                                     }/>
-                                    <Route path={'/profile/:id'} element={
+                                    <Route exact={true} path={'/profile/:id'} element={
                                         <Profile/>
                                     }/>
                                     {auth.adminStatus
