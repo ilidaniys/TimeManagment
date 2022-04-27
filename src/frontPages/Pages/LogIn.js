@@ -30,7 +30,7 @@ const LogIn = () => {
     const [pwdFocus, setPwdFocus] = useState(false)
 
     const [errMassage, setErrMassage] = useState('')
-    const [success, setSuccess] = useState(false)
+    // const [success, setSuccess] = useState(false)
 
 
     useEffect(() => {
@@ -72,6 +72,7 @@ const LogIn = () => {
             .then((res) => {
                 const err = res.data.errMassage
                 if (!err) {
+                    console.log(res.data.status)
                     auth.authHandler(res.data.status)
                     auth.adminStatusHandler(res.data.adminStatus)
                     return res.data.accessToken
@@ -90,21 +91,10 @@ const LogIn = () => {
     return (
         <RegisterHoc>
             <RegisterWrapper height={'25rem'}>
-                <RegisterConteiner onSubmit={handleSubmit}>
+                <RegisterConteiner onSubmit={handleSubmit} autoComplete={'off'}>
                     {errMassage
                         ? <p> incorrect email, or already used </p>
                         : null}
-                    {/*<InputLogin*/}
-                    {/*    type={'text'}*/}
-                    {/*    autoComplete={'off'}*/}
-                    {/*    required={'true'}*/}
-                    {/*    setState={setUser}*/}
-                    {/*    onFocus={() => setUserFocus(true)}*/}
-                    {/*    focus={userFocus}*/}
-                    {/*    state={user}*/}
-                    {/*>*/}
-                    {/*    User Name*/}
-                    {/*</InputLogin>*/}
                     <InputLogin
                         type={'text'}
                         autoComplete={'off'}

@@ -21,6 +21,7 @@ const InputWrapper = styled.div`
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: .125rem;
+    cursor: text;
 
     ::placeholder {
       color: var(--stop-button-color-60);
@@ -90,7 +91,6 @@ const InputRegister = ({
                            type,
                            children,
                            useRef,
-                           autoComplete,
                            required,
                            setState,
                            ariaInvalid,
@@ -111,7 +111,7 @@ const InputRegister = ({
                 className={'Input'}
                 placeholder={' '}
                 ref={useRef}
-                autoComplete={autoComplete}
+                autoComplete={'off'}
                 required={{required}}
                 onChange={(event) => setState(event.target.value)}
                 aria-invalid={ariaInvalid}

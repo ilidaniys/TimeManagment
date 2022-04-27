@@ -89,7 +89,7 @@ const CounterContext = ({children}) => {
                     method: 'GET'
                 }, 'get')
                     .then(res => {
-                        // console.log('refresh start')
+                        console.log('refresh start')
                         if (res.data.unSession) {
                             // console.log('res.data.unSession', res.data.unSession)
                             const startTime = moment(res.data.unSession.startTime)

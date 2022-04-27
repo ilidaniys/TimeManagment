@@ -76,7 +76,6 @@ const InputWrapper = styled.div`
 const InputLogin = ({
                         type,
                         useRef,
-                        autoComplete,
                         required,
                         setState,
                         ariaInvalid,
@@ -86,13 +85,12 @@ const InputLogin = ({
                     }) => {
     return (
         <InputWrapper>
-
             <input
                 type={type}
                 className={'Input'}
                 placeholder={' '}
                 ref={useRef}
-                autoComplete={autoComplete}
+                autoComplete={'off'}
                 required={{required}}
                 onChange={(event) => setState(event.target.value)}
                 aria-invalid={ariaInvalid}

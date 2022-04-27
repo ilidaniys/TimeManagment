@@ -25,7 +25,7 @@ const SessionCardWrapper = styled.div`
 
   > p {
     color: var(--gray-8);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 `
 

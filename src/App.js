@@ -40,25 +40,23 @@ function App() {
                                             <AdminPanel/>
                                         }/>
                                         : null}
-
                                     <Route path={'*'} element={<Home/>}/>
                                 </Routes>
                             </Lauout>
                         </BrowserRouter>
                         : <BrowserRouter>
                             <Routes>
-                                <Route path={'*'} element={
-                                    <LogIn/>
-                                }/>
                                 <Route path={'/login'} element={
                                     <LogIn/>
                                 }/>
                                 <Route path={'/register'} element={
                                     <Register/>
                                 }/>
+                                <Route path={'*'} element={
+                                    <LogIn/>
+                                }/>
                             </Routes>
                         </BrowserRouter>
-
                     }
                 </Hoc>
             </ProfileContext>
