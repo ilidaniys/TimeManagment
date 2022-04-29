@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import UserCard from "../component/Session/UserCard";
-import {authFetch} from "../Context/authContext/createAuthProvider";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import {useParams} from "react-router";
+import {authFetch} from "../../utility/authFetch";
 
 
 const AdminPanelWrapper = styled.div`

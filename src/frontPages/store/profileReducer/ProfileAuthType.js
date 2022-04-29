@@ -1,2 +1,6 @@
-export const SET_USER = 'SET_USER'
+export const SET_USER_NAME = 'SET_USER_NAME'
+export const SET_USER_EMAIL = 'SET_USER_EMAILR'
+export const SET_USER_SPEND_TIME = 'SET_USER_SPEND_TIME'
+export const SET_USER_SESSION = 'SET_USER_SESSION'
+export const SET_PROFILE_URL = 'SET_USER_NAME'
 export const START_GET_USER = 'START_GET_USER'

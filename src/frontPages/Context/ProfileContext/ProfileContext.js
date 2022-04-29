@@ -1,8 +1,8 @@
 import React, {createContext, useContext, useState} from 'react';
-import {authFetch} from "../authContext/createAuthProvider";
 import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
 import moment from "moment";
 import SessionCard from "../../component/Session/SessionCard";
+import {authFetch} from "../../../utility/authFetch";
 
 
 const ProfileProvider = createContext()

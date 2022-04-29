@@ -2,8 +2,8 @@ import axios from "axios";
 import {store} from "../frontPages/store/store";
 
 
-export const authFetchTest = async ({input, init, type, data}) => {
-    const token = await store.getState().authReducer.token
+export const authFetch = async (input, init, type, data) => {
+    const token = store.getState().authReducer.token
     console.log('token',token)
     init = init || {}
     init.headers = {
@@ -17,5 +17,14 @@ export const authFetchTest = async ({input, init, type, data}) => {
         return await axios.post(input, data, init)
     }
 }
+
+
+
+// const login = newTokens => {
+//     tokenProvider.setToken(newTokens)
+// }
+// const logout = () => {
+//     tokenProvider.setToken(null)
+// }
 
 // export const test =

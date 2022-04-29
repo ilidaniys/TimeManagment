@@ -11,10 +11,13 @@ import axios from "axios";
 import {login} from "../Context/authContext/createAuthProvider";
 import RegisterHoc from "../hoc/RegisterHoc";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setAuthAdminStatusCreator, setAuthStatusCreator, setAuthTokenCreator} from "../store/authReducer/AuthReducer";
 
 const LogIn = () => {
 
     const auth = useAuth()
+    const dispatch = useDispatch()
     let navigate = useNavigate()
 
     const [user, setUser] = useState('')
@@ -41,7 +44,6 @@ const LogIn = () => {
             setValidName(false)
         }
     }, [user])
-
     useEffect(() => {
         if (email) {
             setValidEmail(true)
@@ -50,7 +52,6 @@ const LogIn = () => {
             setValidEmail(false)
         }
     }, [email])
-
     useEffect(() => {
         if (pwd) {
             setValidPwd(true)
@@ -58,7 +59,6 @@ const LogIn = () => {
             setValidPwd(false)
         }
     }, [pwd])
-
     useEffect(() => {
         setErrMassage('')
     }, [ email, pwd])
@@ -73,14 +73,14 @@ const LogIn = () => {
                 const err = res.data.errMassage
                 if (!err) {
                     console.log(res.data.status)
-                    auth.authHandler(res.data.status)
-                    auth.adminStatusHandler(res.data.adminStatus)
+                    dispatch(setAuthStatusCreator(res.data.status))
+                    dispatch(setAuthAdminStatusCreator(res.data.adminStatus))
                     return res.data.accessToken
                 }
                 setErrMassage(err)
             })
             .then(token => {
-                login(token)
+                dispatch(setAuthTokenCreator(token))
                 navigate(`/`)
             })
             .catch((e) => {
