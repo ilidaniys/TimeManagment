@@ -3,6 +3,7 @@ import axios from "axios";
 
 
 const createTokenProvider = () => {
+
     let _token = {
         accessToken: localStorage.getItem('TOKEN'),
         refreshToken: ''
@@ -22,14 +23,19 @@ const createTokenProvider = () => {
     }
 
     const getToken = async () => {
-        if (!_token) return null
-        if (isExpired(getExpirationDate(_token.accessToken))) {
-            // console.log(isExpired(getExpirationDate(_token.accessToken)))
-            const updateToken = axios.get('http://localhost:5000/token')
-                .then(res => res.json())
-                .catch(e => console.log(e))
-            setToken(updateToken)
+        let _token = {
+            accessToken: localStorage.getItem('TOKEN'),
+            refreshToken: ''
         }
+        if (!_token) return null
+        // if (isExpired(getExpirationDate(_token.accessToken))) {
+        //     console.log('isExpired(getExpirationDate(_token.accessToken)) true')
+        //     const updateToken = axios.get('http://localhost:5000/token')
+        //         .then(res => res.json())
+        //         .catch(e => console.log(e))
+        //     setToken(updateToken)
+        // }
+        // console.log('_token', _token)
         return _token && _token.accessToken
     }
 
@@ -54,7 +60,7 @@ const createTokenProvider = () => {
             localStorage.removeItem('TOKEN')
         }
         _token.accessToken = token
-        notify()
+        // notify()
     }
 
 

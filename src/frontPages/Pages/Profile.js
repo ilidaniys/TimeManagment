@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {useProfile} from "../Context/ProfileContext/ProfileContext";
 import {useParams} from "react-router-dom";
 import {RenderGraph} from "../component/GraphLogic/Graph";
+import {authFetchTest} from "../../utility/authFetch";
 
 
 const ProfileWrapper = styled.div`
@@ -68,8 +69,9 @@ const Profile = () => {
     const {id} = useParams()
 
     useEffect(() => {
-        console.log('session list', profileContext.sessions.session)
-        console.log('id', id)
+        // console.log('session list', profileContext.sessions.session)
+        // console.log('id', id)
+        // console.log('authFetchTest', authFetchTest())
         let url = `http://localhost:5000/api/profile`
         if (id && id !== '') {
             url += `/${id}`

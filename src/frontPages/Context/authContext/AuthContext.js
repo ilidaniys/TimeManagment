@@ -25,16 +25,13 @@ const AuthContext = ({children}) => {
         checkAuth()
     }, [auth])
 
-
     function authHandler(status) {
         setAuth(status)
     }
-
     function adminStatusHandler(status) {
         // console.log('hendler status', status)
         setAdminStatus(status)
     }
-
 
     return (
         <AuthProvider.Provider
