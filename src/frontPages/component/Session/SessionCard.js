@@ -48,7 +48,7 @@ const SessionCard = () => {
                     const counter = endDateTime - startDateTime
                     const time = SecondToDate(counter)
                     return (
-                        <SessionCardWrapper>
+                        <SessionCardWrapper key={index}>
                             <h1>Start of work:</h1>
                             <p>{startDate}</p>
                             <h1>End of work:</h1>

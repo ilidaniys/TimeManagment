@@ -59,7 +59,7 @@ const Home = () => {
         // console.log('counter', counter)
         const time = SecondToDate(counter)
         dispatch(currentCounterCreator(time))
-    }, [startCounter])
+    }, [dispatch, startCounter])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -81,7 +81,7 @@ const Home = () => {
             }
         }, 1001)
         return () => clearInterval(interval)
-    }, [auth, startCounter])
+    }, [auth, dispatch, startCounter])
 
 
     function dispatchStartCounterHandler () {

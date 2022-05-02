@@ -91,7 +91,7 @@ const Profile = () => {
 
     useEffect(() =>{
         dispatch(startGetUserCreator())
-    }, [URL])
+    }, [URL, dispatch])
 
     return (
         <ProfileWrapper>
