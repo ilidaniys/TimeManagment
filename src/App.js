@@ -7,20 +7,20 @@ import Profile from "./frontPages/Pages/Profile";
 import Register from "./frontPages/Pages/Register";
 import LogIn from "./frontPages/Pages/LogIn";
 import CounterContext from "./frontPages/Context/CounterContext/CounterContext";
-import {useAuth} from "./frontPages/Context/authContext/AuthContext";
 import AdminPanel from "./frontPages/Pages/AdminPanel";
 import Hoc from "./frontPages/hoc/Hoc";
 import ProfileContext from "./frontPages/Context/ProfileContext/ProfileContext";
+import {useSelector} from "react-redux";
 
 
 function App() {
-    const auth = useAuth()
-
+    const auth = useSelector(state => state.authReducer.token)
+    const adminStatus = useSelector(state => state.authReducer.adminStatus)
     return (
         <CounterContext>
             <ProfileContext>
                 <Hoc>
-                    {auth.auth
+                    {auth
                         ? <BrowserRouter>
                             <Header>
                             </Header>
@@ -35,7 +35,7 @@ function App() {
                                     <Route exact={true} path={'/profile/:id'} element={
                                         <Profile/>
                                     }/>
-                                    {auth.adminStatus
+                                    {adminStatus
                                         ? <Route path={'/AdminPanel'} element={
                                             <AdminPanel/>
                                         }/>

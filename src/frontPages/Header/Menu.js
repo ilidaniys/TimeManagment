@@ -25,9 +25,8 @@ const RightButton = styled.div`
 
 
 const Menu = () => {
-    // const auth = useAuth()
     const dispatch = useDispatch()
-    const authStatus = useSelector(state => state.status)
+    const authStatus = useSelector(state => state.authReducer.status)
     console.log('auth', authStatus)
     const navigate = useNavigate()
 
@@ -38,7 +37,7 @@ const Menu = () => {
             .then((res) => {
                 navigate('/login')
                 dispatch(setAuthTokenCreator(''))
-                dispatch(setAuthStatusCreator(res.data.auth))
+                dispatch(setAuthStatusCreator(false))
                 localStorage.clear()
                 console.log(res.data)
             })

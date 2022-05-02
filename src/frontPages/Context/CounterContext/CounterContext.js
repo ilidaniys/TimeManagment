@@ -1,17 +1,14 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
-import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
-import {authFetch} from "../authContext/createAuthProvider";
-import moment from "moment";
-import {useAuth} from "../authContext/AuthContext";
+import React, {createContext, useContext,} from 'react';
 
-//
-// const CounterProvider = createContext()
-//
-// export const useCounter = () => {
-//     return useContext(CounterProvider)
-// }
 
-// const CounterContext = ({children}) => {
+
+const CounterProvider = createContext()
+
+export const useCounter = () => {
+    return useContext(CounterProvider)
+}
+
+const CounterContext = ({children}) => {
 //
 //     const [startCounter, setStartCounter] = useState('')
 //     const [currentCounter, setCurrentCounter] = useState('00:00:00')
@@ -107,16 +104,16 @@ import {useAuth} from "../authContext/AuthContext";
 //     //     return () => clearInterval(interval)
 //     // }, [auth.auth, startCounter])
 //
-//     return (
-//         <CounterProvider.Provider value={{
-//             currentCounter,
-//             startCounter,
-//             startCounterHandler,
-//             endCounterHandler
-//         }}>
-//             {children}
-//         </CounterProvider.Provider>
-//     );
-// };
-//
-// export default CounterContext;
+    return (
+        <CounterProvider.Provider value={{
+            // currentCounter,
+            // startCounter,
+            // startCounterHandler,
+            // endCounterHandler
+        }}>
+            {children}
+        </CounterProvider.Provider>
+    );
+};
+
+export default CounterContext;

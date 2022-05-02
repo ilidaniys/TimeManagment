@@ -4,7 +4,7 @@ import {store} from "../frontPages/store/store";
 
 export const authFetch = async (input, init, type, data) => {
     const token = store.getState().authReducer.token
-    console.log('token',token)
+    // console.log('token',token)
     init = init || {}
     init.headers = {
         ...init.headers,

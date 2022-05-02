@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components'
 import MainButton from "../component/MainButton";
 import {useCounter} from "../Context/CounterContext/CounterContext";
-import {SecondToDate} from "../component/CounterLogic/CounterFunction";
+import {SecondToDate, secondToHour} from "../component/CounterLogic/CounterFunction";
 
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
@@ -49,19 +49,19 @@ const HomeConteiner = styled.div`
 const Home = () => {
     const counter = useCounter()
     const auth = useSelector(state => state.authReducer.status)
+    const token = useSelector(state => state.authReducer.token)
     const startCounter = useSelector(state => state.counterReducer.startCounter)
     const currentCounter = useSelector(state => state.counterReducer.currentCounter)
     const dispatch = useDispatch()
-    console.log('startCounter', startCounter)
 
     useEffect(() => {
-        if (startCounter === '') {
-            dispatch(startCounterCreator(SecondToDate(0)))
+        if (startCounter === 0) {
+            dispatch(startCounterCreator(0))
             return
         }
         const data = new Date()
         const counter = data - startCounter
-        console.log(counter)
+        console.log('counter', counter)
         const time = SecondToDate(counter)
         dispatch(currentCounterCreator(time))
     }, [startCounter])
@@ -75,12 +75,13 @@ const Home = () => {
                     .then(res => {
                         console.log('refresh start')
                         if (res.data.unSession) {
+                            console.log('res.data.unSession')
                             // console.log('res.data.unSession', res.data.unSession)
                             const startTime = moment(res.data.unSession.startTime)
                             dispatch(startCounterCreator(startTime))
                         } else {
                             // console.log('!res.data.unSession')
-                            if (startCounter !== '') dispatch(startCounterCreator(""))
+                            if (startCounter !== 0) dispatch(currentCounterCreator(SecondToDate(0)))
                         }
                     })
                     .catch(e => console.log(e))
@@ -104,8 +105,7 @@ const Home = () => {
         <HomeWrapper>
             <HomeConteiner>
                 <p>Your time: {`${currentCounter}`}</p>
-
-                {(counter.startCounter === '')
+                {(startCounter === 0)
                     ? <MainButton
                         className={'start'}
                         Counterscript={dispatchStartCounterHandler}
@@ -113,7 +113,7 @@ const Home = () => {
                         Start</MainButton>
                     : <MainButton
                         className={'stop'}
-                        Counterscript={counter.endCounterHandler}
+                        Counterscript={dispatchEndCounterHandler}
                     >
                         End</MainButton>
                 }

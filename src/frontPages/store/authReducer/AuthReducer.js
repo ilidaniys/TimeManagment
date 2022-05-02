@@ -2,7 +2,7 @@ import {SET_ADMIN_STATUS, SET_STATUS, SET_TOKEN} from "./AuthReducerType";
 
 
 const defaultAuthState = {
-    token: {},
+    token: '',
     status: '',
     adminStatus: false
 }

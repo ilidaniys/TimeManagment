@@ -6,17 +6,16 @@ import {
     SubmitBlock
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 import InputLogin from "../component/RegisterComponent/InputLogin";
-import {useAuth} from "../Context/authContext/AuthContext";
 import axios from "axios";
-import {login} from "../Context/authContext/createAuthProvider";
+// import {login} from "../Context/authContext/createAuthProvider";
 import RegisterHoc from "../hoc/RegisterHoc";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setAuthAdminStatusCreator, setAuthStatusCreator, setAuthTokenCreator} from "../store/authReducer/AuthReducer";
 
-const LogIn = () => {
+const LogIn = (key, value) => {
 
-    const auth = useAuth()
+    // const auth = useAuth()
     const dispatch = useDispatch()
     let navigate = useNavigate()
 
@@ -80,6 +79,7 @@ const LogIn = () => {
                 setErrMassage(err)
             })
             .then(token => {
+                localStorage.setItem('TOKEN', token)
                 dispatch(setAuthTokenCreator(token))
                 navigate(`/`)
             })

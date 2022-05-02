@@ -4,6 +4,7 @@ import {authFetch} from "../../../utility/authFetch";
 import {START_SET_END_COUNTER, START_SET_START_COUNTER} from "./CounterType";
 
 const startCounterHandler = async (startData) => {
+    console.log('startCounterHandler')
     // const startData = moment().format('MMMM Do YYYY, h:mm:ss')
     await authFetch('http://localhost:5000/api/startTime', {
         method: 'POST',
@@ -11,6 +12,7 @@ const startCounterHandler = async (startData) => {
 }
 const endCounterHandler = async (endData) => {
     // const endData = moment().format('MMMM Do YYYY, h:mm:ss')
+    console.log('endCounterHandler')
     await authFetch('http://localhost:5000/api/endTime', {
         method: 'POST',
     }, 'post', {endData})
@@ -27,7 +29,7 @@ function* endCounterWorker() {
     const endData = new Date()
     console.log('end', endData)
     yield endCounterHandler(endData)
-    yield put(startCounterCreator(''))
+    yield put(startCounterCreator(0))
     yield put(endCounterCreator(endData))
 }
 

@@ -9,11 +9,11 @@ import {store} from "./frontPages/store/store";
 
 ReactDOM.render(
     <React.StrictMode>
-        {/*<Provider store={store}>*/}
+        <Provider store={store}>
             <AuthContext>
                 <App/>
             </AuthContext>
-        {/*</Provider>*/}
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 );

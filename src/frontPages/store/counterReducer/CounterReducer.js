@@ -5,11 +5,12 @@ import {
     START_SET_END_COUNTER,
     START_SET_START_COUNTER
 } from "./CounterType";
+import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
 
 
 const defaultCounterState = {
     startCounter: 0,
-    currentCounter: 0,
+    currentCounter: SecondToDate(0),
     endCounter: 0,
 }
 
