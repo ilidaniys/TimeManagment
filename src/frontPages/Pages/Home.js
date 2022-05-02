@@ -2,18 +2,15 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components'
 import MainButton from "../component/MainButton";
 import {useCounter} from "../Context/CounterContext/CounterContext";
-import {SecondToDate, secondToHour} from "../component/CounterLogic/CounterFunction";
+import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    counterReducer,
     currentCounterCreator, setEndCounterCreator,
     setStartCounterCreator,
     startCounterCreator
 } from "../store/counterReducer/CounterReducer";
-import {profileReducer} from "../store/profileReducer/ProfileReducer";
-import {authReducer} from "../store/authReducer/AuthReducer";
 import {authFetch} from "../../utility/authFetch";
 
 const HomeWrapper = styled.div`
@@ -56,12 +53,12 @@ const Home = () => {
 
     useEffect(() => {
         if (startCounter === 0) {
-            dispatch(startCounterCreator(0))
+            dispatch(currentCounterCreator(SecondToDate(0)))
             return
         }
         const data = new Date()
         const counter = data - startCounter
-        console.log('counter', counter)
+        // console.log('counter', counter)
         const time = SecondToDate(counter)
         dispatch(currentCounterCreator(time))
     }, [startCounter])
@@ -73,14 +70,10 @@ const Home = () => {
                     method: 'GET'
                 }, 'get')
                     .then(res => {
-                        console.log('refresh start')
                         if (res.data.unSession) {
-                            console.log('res.data.unSession')
-                            // console.log('res.data.unSession', res.data.unSession)
                             const startTime = moment(res.data.unSession.startTime)
                             dispatch(startCounterCreator(startTime))
                         } else {
-                            // console.log('!res.data.unSession')
                             if (startCounter !== 0) dispatch(currentCounterCreator(SecondToDate(0)))
                         }
                     })

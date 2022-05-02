@@ -6,6 +6,7 @@ import axios from "axios";
 import {useAuth} from "../Context/authContext/AuthContext";
 import {setAuthStatusCreator, setAuthTokenCreator} from "../store/authReducer/AuthReducer";
 import {useDispatch, useSelector} from "react-redux";
+import {startCounterCreator} from "../store/counterReducer/CounterReducer";
 
 const MenuWrapper = styled.div`
   height: 100%;
@@ -27,6 +28,7 @@ const RightButton = styled.div`
 const Menu = () => {
     const dispatch = useDispatch()
     const authStatus = useSelector(state => state.authReducer.status)
+    const adminStatus = useSelector(state => state.authReducer.adminStatus)
     console.log('auth', authStatus)
     const navigate = useNavigate()
 
@@ -54,7 +56,7 @@ const Menu = () => {
                 </MenuButton>
             </LeftButton>
             <RightButton>
-                {authStatus
+                {adminStatus
                     ? <MenuButton>
                         <NavLink to={'/adminPanel'}>Admin Panel </NavLink>
                     </MenuButton>
