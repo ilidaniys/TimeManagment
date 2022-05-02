@@ -1,6 +1,5 @@
 import {put, takeEvery, call} from 'redux-saga/effects';
 import {START_GET_USER} from "./ProfileAuthType";
-import axios from "axios";
 import {authFetch} from "../../../utility/authFetch";
 import {SecondToDate} from "../../component/CounterLogic/CounterFunction";
 import {store} from "../store";

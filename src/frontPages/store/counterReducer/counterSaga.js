@@ -1,0 +1,37 @@
+import {put, takeEvery} from "redux-saga/effects";
+import {endCounterCreator, startCounterCreator} from "./CounterReducer";
+import {authFetch} from "../../../utility/authFetch";
+import {START_SET_END_COUNTER, START_SET_START_COUNTER} from "./CounterType";
+
+const startCounterHandler = async (startData) => {
+    // const startData = moment().format('MMMM Do YYYY, h:mm:ss')
+    await authFetch('http://localhost:5000/api/startTime', {
+        method: 'POST',
+    }, 'post', {startData})
+}
+const endCounterHandler = async (endData) => {
+    // const endData = moment().format('MMMM Do YYYY, h:mm:ss')
+    await authFetch('http://localhost:5000/api/endTime', {
+        method: 'POST',
+    }, 'post', {endData})
+}
+
+
+function* startCounterWorker() {
+    const startData = new Date()
+    yield startCounterHandler(startData)
+    yield put(startCounterCreator(startData))
+}
+
+function* endCounterWorker() {
+    const endData = new Date()
+    console.log('end', endData)
+    yield endCounterHandler(endData)
+    yield put(startCounterCreator(''))
+    yield put(endCounterCreator(endData))
+}
+
+export function* counterWatcher() {
+    yield takeEvery(START_SET_START_COUNTER, startCounterWorker)
+    yield takeEvery(START_SET_END_COUNTER, endCounterWorker)
+}
