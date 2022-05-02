@@ -2,10 +2,10 @@ import {Bar} from "react-chartjs-2";
 import {Chart as ChartJS} from 'chart.js/auto'
 import {Chart} from 'react-chartjs-2'
 import React from "react";
-import {useProfile} from "../../Context/ProfileContext/ProfileContext";
 import moment from "moment";
 import styled from "styled-components";
 import {secondToHour} from "../CounterLogic/CounterFunction";
+import {useSelector} from "react-redux";
 
 
 const BarWrapper = styled.div`
@@ -17,11 +17,10 @@ const BarWrapper = styled.div`
 
 export const RenderGraph = () => {
 
-    const profileContext = useProfile()
+    const sessions = useSelector(state => state.profileReducer.sessions)
+    const map = {}
     const dataCounter = () => {
-        const ses = profileContext.sessions.session
-        const map = {}
-        ses.forEach(session => {
+        sessions?.session?.forEach(session => {
             const date = moment(session.startTime).format("MMM Do")
             const startDateTime = new moment(session.startTime)
             if (session.endTime !== "0") {
@@ -34,10 +33,9 @@ export const RenderGraph = () => {
             }
             return null
         })
-
         return map
     }
-    if (profileContext.sessions) {
+    if (sessions) {
         const dateMap = dataCounter()
         const value = Object.values(dateMap)
         console.log('value', value)

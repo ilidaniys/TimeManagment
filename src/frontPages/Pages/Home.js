@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components'
 import MainButton from "../component/MainButton";
-import {useCounter} from "../Context/CounterContext/CounterContext";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 
 import moment from "moment";
@@ -44,9 +43,8 @@ const HomeConteiner = styled.div`
 
 
 const Home = () => {
-    const counter = useCounter()
+
     const auth = useSelector(state => state.authReducer.status)
-    const token = useSelector(state => state.authReducer.token)
     const startCounter = useSelector(state => state.counterReducer.startCounter)
     const currentCounter = useSelector(state => state.counterReducer.currentCounter)
     const dispatch = useDispatch()

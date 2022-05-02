@@ -1,7 +1,8 @@
 import {put, takeEvery} from "redux-saga/effects";
-import {START_GET_USER} from "../profileReducer/ProfileAuthType";
+
 import {setAuthStatusCreator, setAuthTokenCreator} from "./AuthReducer";
 import {store} from "../store";
+import {START_GET_USER_STATUS} from "./AuthReducerType";
 
 // const getExpirationDate = (jwtToken) => {
 //     if (!jwtToken) return null
@@ -47,5 +48,5 @@ export function* authWatcher() {
     yield put(setAuthStatusCreator(getStatus()))
     // console.log('getToken()', getToken())
     // console.log('put')
-    yield takeEvery(START_GET_USER, authWorker)
+    yield takeEvery(START_GET_USER_STATUS, authWorker)
 }

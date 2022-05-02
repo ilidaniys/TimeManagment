@@ -1,9 +1,12 @@
 import React, {useEffect} from 'react';
 import styled from "styled-components";
-import {useProfile} from "../Context/ProfileContext/ProfileContext";
 import {useParams} from "react-router-dom";
 import {RenderGraph} from "../component/GraphLogic/Graph";
-import {authFetchTest} from "../../utility/authFetch";
+
+import {SecondToDate} from "../component/CounterLogic/CounterFunction";
+import SessionCard from "../component/Session/SessionCard";
+import {useDispatch, useSelector} from "react-redux";
+import { getUrlSessionCreator, startGetUserCreator} from "../store/profileReducer/ProfileReducer";
 
 
 const ProfileWrapper = styled.div`
@@ -65,20 +68,30 @@ const ProfileGraph = styled.div`
 
 const Profile = () => {
 
-    const profileContext = useProfile()
     const {id} = useParams()
+    const dispatch = useDispatch()
+    const name = useSelector(state => state.profileReducer.name)
+    const email = useSelector(state => state.profileReducer.email)
+    const URL = useSelector(state => state.profileReducer.url)
+    const spendTime = useSelector(state => state.profileReducer.spendTime)
 
     useEffect(() => {
         // console.log('session list', profileContext.sessions.session)
         // console.log('id', id)
         // console.log('authFetchTest', authFetchTest())
         let url = `http://localhost:5000/api/profile`
+        console.log('url profile',url)
         if (id && id !== '') {
             url += `/${id}`
             console.log('url+id', url)
         }
-        profileContext.user(url)
-    }, [id])
+        dispatch(getUrlSessionCreator(url))
+
+    }, [dispatch, id])
+
+    useEffect(() =>{
+        dispatch(startGetUserCreator())
+    }, [URL])
 
     return (
         <ProfileWrapper>
@@ -87,11 +100,11 @@ const Profile = () => {
                     Contact info
                     <div>
                         <p>Name:</p>
-                        <p>{profileContext.name}</p>
+                        <p>{name}</p>
                         <p>Email: </p>
-                        <p>{profileContext.email}</p>
+                        <p>{email}</p>
                         <p>All your spend time for work:</p>
-                        <p>{profileContext.spendTime}</p>
+                        <p>{SecondToDate(spendTime) }</p>
                     </div>
                 </ProfileContactInfo>
                 <ProfileGraph>
@@ -100,7 +113,7 @@ const Profile = () => {
             </ProfileInfo>
             Your session:
             <div className={'wrapperCard'}>
-                {profileContext.renderCards()}
+                <SessionCard/>
             </div>
         </ProfileWrapper>
     );

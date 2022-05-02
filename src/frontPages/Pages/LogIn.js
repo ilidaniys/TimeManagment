@@ -7,15 +7,13 @@ import {
 } from "../component/RegisterComponent/RegisterWrapper/Register Wrapper";
 import InputLogin from "../component/RegisterComponent/InputLogin";
 import axios from "axios";
-// import {login} from "../Context/authContext/createAuthProvider";
 import RegisterHoc from "../hoc/RegisterHoc";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setAuthAdminStatusCreator, setAuthStatusCreator, setAuthTokenCreator} from "../store/authReducer/AuthReducer";
 
-const LogIn = (key, value) => {
+const LogIn = () => {
 
-    // const auth = useAuth()
     const dispatch = useDispatch()
     let navigate = useNavigate()
 

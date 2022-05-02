@@ -6,10 +6,8 @@ import Home from "./frontPages/Pages/Home";
 import Profile from "./frontPages/Pages/Profile";
 import Register from "./frontPages/Pages/Register";
 import LogIn from "./frontPages/Pages/LogIn";
-import CounterContext from "./frontPages/Context/CounterContext/CounterContext";
 import AdminPanel from "./frontPages/Pages/AdminPanel";
 import Hoc from "./frontPages/hoc/Hoc";
-import ProfileContext from "./frontPages/Context/ProfileContext/ProfileContext";
 import {useSelector} from "react-redux";
 
 
@@ -17,8 +15,6 @@ function App() {
     const auth = useSelector(state => state.authReducer.token)
     const adminStatus = useSelector(state => state.authReducer.adminStatus)
     return (
-        <CounterContext>
-            <ProfileContext>
                 <Hoc>
                     {auth
                         ? <BrowserRouter>
@@ -59,8 +55,6 @@ function App() {
                         </BrowserRouter>
                     }
                 </Hoc>
-            </ProfileContext>
-        </CounterContext>
     );
 }
 
