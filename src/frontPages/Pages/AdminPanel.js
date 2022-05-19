@@ -4,6 +4,7 @@ import UserCard from "../component/Session/UserCard";
 import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import {useParams} from "react-router";
 import {authFetch} from "../../utility/authFetch";
+import {URLI} from "../../App";
 
 
 const AdminPanelWrapper = styled.div`
@@ -34,7 +35,7 @@ const AdminPanel = () => {
     console.log('id', id)
     useEffect(() => {
       const userList = async () => {
-         await authFetch('http://localhost:5000/api/adminList', {
+         await authFetch(`${URLI}/api/adminList`, {
               method: 'GET'
           }, 'get')
               .then(res => {

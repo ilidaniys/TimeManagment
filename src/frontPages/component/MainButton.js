@@ -30,11 +30,6 @@ const ButtonWrapper = styled.button`
 
 const MainButton = ({className, children, Counterscript}) => {
 
-    // function buttonFunction () {
-    //     buttonHandler()
-    //     Counterscript()
-    // }
-
     return (
         <ButtonWrapper className={className} onClick={() => Counterscript()}>
             {children}

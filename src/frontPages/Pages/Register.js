@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from 'react';
-import styled from 'styled-components'
 import InputRegister from "../component/RegisterComponent/InputRegister";
 import SubmitRegister from "../component/RegisterComponent/SubmitRegister";
 import LinkSingup from "../component/RegisterComponent/LinkSingup";
@@ -10,12 +9,13 @@ import {
 import SuccessMassage from "../component/RegisterComponent/SuccessMassage";
 import axios from "axios";
 import RegisterHoc from "../hoc/RegisterHoc";
+import {URLI} from "../../App";
 
 const userRegex = /^[a-zA-Z\-]{4,24}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,24}$/;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-const Register = (props) => {
+const Register = () => {
 
     const userRef = useRef()
 
@@ -64,7 +64,7 @@ const Register = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
-            .post('http://localhost:5000/api/register', {
+            .post(`${URLI}/api/register`, {
                 name: user,
                 email,
                 password: pwd,

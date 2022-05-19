@@ -35,13 +35,6 @@ const UserCardWrapper = styled.div`
 
 
 const UserCard = ({userName, userEmail, time, session, id}) => {
-    // const userProfileId = () => {
-    //     authFetch(`http://localhost:5000/api/adminList/profile/${id}`, {
-    //         method: 'GET'
-    //     }, 'get')
-    //         .then(res => console.log(res.data))
-    //         .catch(e => console.log(e))
-    // }
 
     return (
         <UserCardWrapper>

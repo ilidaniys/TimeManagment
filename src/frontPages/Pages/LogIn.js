@@ -11,6 +11,7 @@ import RegisterHoc from "../hoc/RegisterHoc";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setAuthAdminStatusCreator, setAuthStatusCreator, setAuthTokenCreator} from "../store/authReducer/AuthReducer";
+import {URLI} from "../../App";
 
 const LogIn = () => {
 
@@ -19,7 +20,6 @@ const LogIn = () => {
 
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
-    // const [userFocus, setUserFocus] = useState(false)
 
     const [email, setEmail] = useState('')
     const [validEmail, setValidEmail] = useState(false)
@@ -30,8 +30,6 @@ const LogIn = () => {
     const [pwdFocus, setPwdFocus] = useState(false)
 
     const [errMassage, setErrMassage] = useState('')
-    // const [success, setSuccess] = useState(false)
-
 
     useEffect(() => {
         if (user) {
@@ -63,7 +61,7 @@ const LogIn = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
-            .post('http://localhost:5000/api/login', {
+            .post(`${URLI}/api/login`, {
                 email, pwd
             })
             .then((res) => {

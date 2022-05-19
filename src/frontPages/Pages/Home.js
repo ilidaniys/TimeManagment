@@ -11,6 +11,7 @@ import {
     startCounterCreator
 } from "../store/counterReducer/CounterReducer";
 import {authFetch} from "../../utility/authFetch";
+import {URLI} from "../../App";
 
 const HomeWrapper = styled.div`
   display: flex;
@@ -64,7 +65,7 @@ const Home = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             if (auth !== '') {
-                authFetch('http://localhost:5000/api/refreshStart', {
+                authFetch(`${URLI}/api/refreshStart`, {
                     method: 'GET'
                 }, 'get')
                     .then(res => {

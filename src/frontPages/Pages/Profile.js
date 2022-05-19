@@ -7,6 +7,7 @@ import {SecondToDate} from "../component/CounterLogic/CounterFunction";
 import SessionCard from "../component/Session/SessionCard";
 import {useDispatch, useSelector} from "react-redux";
 import { getUrlSessionCreator, startGetUserCreator} from "../store/profileReducer/ProfileReducer";
+import {URLI} from "../../App";
 
 
 const ProfileWrapper = styled.div`
@@ -76,10 +77,7 @@ const Profile = () => {
     const spendTime = useSelector(state => state.profileReducer.spendTime)
 
     useEffect(() => {
-        // console.log('session list', profileContext.sessions.session)
-        // console.log('id', id)
-        // console.log('authFetchTest', authFetchTest())
-        let url = `http://localhost:5000/api/profile`
+        let url = `${URLI}/api/profile`
         console.log('url profile',url)
         if (id && id !== '') {
             url += `/${id}`

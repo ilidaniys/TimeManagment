@@ -22,10 +22,7 @@ const SubmitButton = styled.button`
     color: var(--gray-3);
     cursor: inherit;
   }
-  //:disabled :hover{
-  //  background: #d81159;
-  //}
-  
+ 
 `
 
 const SubmitRegister = ({validMatch, validEmail, validName, validPwd}) => {

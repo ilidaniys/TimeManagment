@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import MenuButton from "../component/MenuButton";
 import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
-import {useAuth} from "../Context/authContext/AuthContext";
 import {setAuthStatusCreator, setAuthTokenCreator} from "../store/authReducer/AuthReducer";
 import {useDispatch, useSelector} from "react-redux";
-import {startCounterCreator} from "../store/counterReducer/CounterReducer";
+import {URLI} from "../../App";
 
 const MenuWrapper = styled.div`
   height: 100%;
@@ -35,7 +34,7 @@ const Menu = () => {
 
     const quite = () => {
         axios
-            .get('http://localhost:5000/api/logout')
+            .get(`${URLI}/api/logout`)
             .then((res) => {
                 navigate('/login')
                 dispatch(setAuthTokenCreator(''))

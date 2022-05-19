@@ -7,13 +7,9 @@ import styled from "styled-components";
 export const RegisterWrapper = styled.div`
   height: ${props => props.height || '10rem'};
   width: 50%;
-  //margin-right: auto;
-  //margin-left: auto;
   background: var(--surface-3);
   border-radius: .5rem;
   position: relative;
-  //padding-top: 5rem;
-  //top: 5rem;
 `
 export const RegisterConteiner = styled.form`
   position: inherit;
@@ -38,5 +34,4 @@ export const SubmitBlock = styled.div`
   align-items: center;
   gap: 1rem;
   width: 80%;
-  //cursor: text;
 `
