@@ -10,7 +10,7 @@ import AdminPanel from "./frontPages/Pages/AdminPanel";
 import Hoc from "./frontPages/hoc/Hoc";
 import {useSelector} from "react-redux";
 
-export const URLI = 'http://afternoon-spire-35709.herokuapp.com'
+export const URLI = 'https://afternoon-spire-35709.herokuapp.com'
 
 function App() {
     const auth = useSelector(state => state.authReducer.token)
