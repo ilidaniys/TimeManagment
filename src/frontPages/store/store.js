@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 // noinspection JSDeprecatedSymbols
 export const store = createStore(
     rootReducer,
-    compose(applyMiddleware(sagaMiddleware),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    applyMiddleware(sagaMiddleware)
 )
 
 sagaMiddleware.run(rootWatcher)
