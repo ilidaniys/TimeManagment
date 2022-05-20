@@ -73,7 +73,11 @@ const Home = () => {
                             const startTime = moment(res.data.unSession.startTime)
                             dispatch(startCounterCreator(startTime))
                         } else {
-                            if (startCounter !== 0) dispatch(currentCounterCreator(SecondToDate(0)))
+                            if (startCounter !== 0) {
+                                console.log('startCurentCounter', startCounter)
+                                dispatch(startCounterCreator(0))
+                                dispatch(currentCounterCreator(SecondToDate(0)))
+                            }
                         }
                     })
                     .catch(e => console.log(e))
